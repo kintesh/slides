@@ -1,0 +1,33 @@
+{
+  "name": "slides",
+  "version": "0.0.0",
+  "description": "A tool to make and present HTML5 slides",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://kintesh@github.com/kintesh/slides.git"
+  },
+  "keywords": [
+    "slide",
+    "slides",
+    "presentation",
+    "web",
+    "html"
+  ],
+  "author": "Kintesh <i.am@kinte.sh> (http://kinte.sh/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kintesh/slides/issues"
+  },
+  "homepage": "https://github.com/kintesh/slides"
+}
