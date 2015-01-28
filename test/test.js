@@ -3,7 +3,7 @@
  */
 var assert = require("assert");
 
-describe('Test', function () {
+describe("Test", function () {
 
     it("Rigorous tests", function () {
         assert.equal(true, true);
