@@ -7,28 +7,28 @@ var assert = require("assert"),
     testSource
     ;
 
-describe("Translator", function () {
+describe("Translator", function() {
 
-    it("Rigorous tests", function () {
+    it("Rigorous tests", function() {
         assert.equal(true, true);
         assert.notEqual(true, false);
         assert.notDeepEqual(translator, {});
         assert.notDeepEqual(fs, {});
     });
 
-    it("Test removeComments(source)", function () {
+    it("Test removeComments(source)", function() {
         var input = "Tyche is the /*nick*/name given to a /**hypothetical**/ gas giant located in the " +
                 "Solar System's Oort cloud//.",
             output = "Tyche is the name given to a  gas giant located in the Solar System's Oort cloud";
         assert.equal(translator.removeComments(input), output);
     });
 
-    it("read test source file", function() {
+    it("read test for source file", function() {
         testSource = fs.readFileSync(__dirname+"/testSource", "utf8");
         assert.notDeepEqual(testSource, undefined);
     });
 
-    it("test for readProperties", function () {
+    it("test for readProperties", function() {
         var input = testSource,
             output = {
                 title: 'Sample Slides',
@@ -37,6 +37,17 @@ describe("Translator", function () {
                 date: '28/01/2015'
             };
         assert.deepEqual(translator.readProperties(input), output);
+    });
+
+    it("test for extractFrames", function() {
+        var input = testSource,
+            frameLength = 7,
+            frame0 = "# Headers\n---------\n\n# H1 header\n## H2 header\n### H3 header\n#### H4 header\n" +
+                "##### H5 header\n###### H6 header\n\n";
+        var frames = translator.extractFrames(input);
+
+        assert.equal(frameLength, frames.length);
+        assert.deepEqual(frame0, frames[0]);
     });
 
 });
