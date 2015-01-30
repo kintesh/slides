@@ -50,4 +50,38 @@ describe("Translator", function() {
         assert.deepEqual(frame0, frames[0]);
     });
 
+    it("test for extractMaths", function() {
+        var inputFrame = "Inline math equations go in like so: $ \\omega = d\\phi / dt $. Display math should " +
+                "get its own line and be put in in double-dollarsigns:\n\n$$ I = \\int \\rho R^{2} dV $$\n\nAnd " +
+                "note that you can backslash-escape any punctuation characters.",
+            outputFrame = "Inline math equations go in like so: %{MATH0}. Display math should get its own " +
+                "line and be put in in double-dollarsigns:\n\n%{MATH1}\n\nAnd note that you can backslash-escape " +
+                "any punctuation characters.",
+            mathsOutput = [
+                { type: 0, value: " \\omega = d\\phi / dt " },
+                { type: 1, value: " I = \\int \\rho R^{2} dV " }
+            ];
+        var output = translator.extractMaths(inputFrame);
+        assert.deepEqual(outputFrame, output.frame);
+        assert.deepEqual(mathsOutput, output.maths);
+    });
+
+    it("test for restoreMaths", function() {
+        var inputFrame = "Inline math equations go in like so: %{MATH0}. Display math should get its own " +
+                "line and be put in in double-dollarsigns:\n\n%{MATH1}\n\nAnd note that you can backslash-escape " +
+                "any punctuation characters.",
+            outputFrame = "Inline math equations go in like so: <div class=\"inlineMath\"> \\omega = d\\phi / dt " +
+                "</div>. Display math should get its own line and be put in in double-dollarsigns:\n\n" +
+                "<div class=\"blockMath\"> I = \\int \\rho R^{2} dV </div>\n\nAnd note that you can " +
+                "backslash-escape any punctuation characters.",
+            maths = [
+                { type: 0, value: " \\omega = d\\phi / dt " },
+                { type: 1, value: " I = \\int \\rho R^{2} dV " }
+            ],
+            replaceInline = "<div class=\"inlineMath\">%{MATH}</div>",
+            replaceBlock = "<div class=\"blockMath\">%{MATH}</div>";
+        var output = translator.restoreMaths(inputFrame, maths, replaceInline, replaceBlock);
+        assert.deepEqual(outputFrame, output);
+    });
+
 });
