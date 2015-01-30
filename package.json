@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "marked": "^0.3.3",
     "mocha": "^2.1.0"
   },
   "scripts": {
