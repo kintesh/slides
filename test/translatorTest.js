@@ -4,8 +4,7 @@
 var assert = require("assert"),
     translator = require("../lib/translator"),
     fs = require("fs"),
-    testSource,
-    marked = require("marked")
+    testSource
     ;
 
 describe("Translator", function() {
@@ -83,29 +82,6 @@ describe("Translator", function() {
             replaceBlock = "<div class=\"blockMath\">%{MATH}</div>";
         var output = translator.restoreMaths(inputFrame, maths, replaceInline, replaceBlock);
         assert.deepEqual(outputFrame, output);
-    });
-
-    it("Marked test", function() {
-        assert.notDeepEqual(marked, {});
-        marked.setOptions({
-            renderer: new marked.Renderer(),
-            gfm: true,
-            tables: true,
-            breaks: false,
-            pedantic: false,
-            sanitize: true,
-            smartLists: true,
-            smartypants: false
-        });
-
-        var frames = translator.extractFrames(testSource);
-
-        console.log(marked(frames[2]));
-
-
-
-
-
     });
 
 });
