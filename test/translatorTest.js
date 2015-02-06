@@ -84,4 +84,14 @@ describe("Translator", function() {
         assert.deepEqual(outputFrame, output);
     });
 
+    it("test for replaceControlTags", function() {
+        var inputFrame = "Itemized lists look like:\n[visibility:reveal, animation:fade]\n  * this one\n  " +
+            "* that one\n  * the other one\n",
+            outputFrame = "Itemized lists look like:\n<div class=\"controlElem\" style=\"display: none;\">" +
+                "{visibility:\"reveal\",animation:\"fade\"}</div>\n  * this one\n  * that one\n  * the other one\n";
+        var output = translator.replaceControlTags(inputFrame);
+
+        assert.deepEqual(outputFrame, output);
+    });
+
 });
