@@ -80,8 +80,7 @@ describe("Translator", function() {
             ],
             replaceInline = "<div class=\"inlineMath\">%{MATH}</div>",
             replaceBlock = "<div class=\"blockMath\">%{MATH}</div>";
-        var output = translator.restoreMaths(inputFrame, maths, replaceInline, replaceBlock);
-        assert.deepEqual(outputFrame, output);
+        assert.deepEqual(translator.restoreMaths(inputFrame, maths, replaceInline, replaceBlock), outputFrame);
     });
 
     it("test for replaceControlTags", function() {
@@ -89,9 +88,20 @@ describe("Translator", function() {
             "* that one\n  * the other one\n",
             outputFrame = "Itemized lists look like:\n<div class=\"controlElem\" style=\"display: none;\">" +
                 "{visibility:\"reveal\",animation:\"fade\"}</div>\n  * this one\n  * that one\n  * the other one\n";
-        var output = translator.replaceControlTags(inputFrame);
+        assert.deepEqual(translator.replaceControlTags(inputFrame), outputFrame);
+    });
 
-        assert.deepEqual(outputFrame, output);
+    it("test for makeTitleSlide", function(){
+        var input = {
+                title: 'Sample Slides',
+                sub_title: 'The following are sample slides showing different features.',
+                author: 'Kintesh Patel',
+                date: '28/01/2015'
+            },
+            output = "<div class=\"slide\">\n<div class=\"title_title\">Sample Slides</div>" +
+                "<div class=\"title_subTitle\">The following are sample slides showing different features.</div>" +
+                "<div class=\"title_author\">Kintesh Patel</div><div class=\"title_date\">28/01/2015</div>\n</div>\n";
+        assert.deepEqual(translator.makeTitleSlide(input), output)
     });
 
 });
