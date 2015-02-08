@@ -104,4 +104,14 @@ describe("Translator", function() {
         assert.deepEqual(translator.makeTitleSlide(input), output)
     });
 
+    it("test for renderMarkdown", function() {
+        var input = "I am using __markdown__.",
+            output = "<p>I am using <strong>markdown</strong>.</p>\n";
+        assert.deepEqual(translator.renderMarkdown(input), output);
+    });
+
+    it.skip("test for translate", function() {
+        console.log(translator.translate(testSource));
+    });
+
 });
