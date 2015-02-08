@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+/**
+ * Created by kintesh on 08/02/15.
+ */
+
+if (!module.parent) {
+    process.title = "slides";
+    main(process.argv.slice(), function(err, code) {
+        if (err) throw err;
+        return process.exit(code || 0);
+    });
+} else {
+    module.exports = main;
+}
+
+function main(argv) {
+
+    var program = require("commander"),
+        slides = require('../'),
+        fs = require("fs");
+
+    program
+        .version("0.0.0")
+        .usage("[options] [source file]")
+        .option("-v, --verbose", "Print verbose output on console")
+        .parse(process.argv);
+
+    if(argv.length <= 2) {
+        return program.help();
+    } else {
+        var pwd = process.env.PWD,
+            inFile = getInFileName(pwd,argv[argv.length-1]),
+            outFile = getOutFileName(inFile),
+            source = undefined,
+            output = undefined;
+
+        if (program.verbose) console.log("Reading file " + inFile);
+        if (program.verbose) console.log("Slides saved to " + outFile);
+
+        source = fs.readFileSync(inFile, "utf8");
+
+        if(source != undefined) {
+            output = slides(source);
+
+            if(output != undefined) {
+                fs.writeFileSync(outFile, output, "utf8");
+            }
+        }
+    }
+
+    function getInFileName(pwd, file) {
+        if(file.charAt(0) === ".") {
+            return  pwd+file.slice(1);
+        } else {
+            return file;
+        }
+    }
+
+    function getOutFileName(inFile) {
+        return inFile+"_slides.html";
+    }
+}
