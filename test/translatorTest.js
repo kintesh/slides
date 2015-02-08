@@ -7,7 +7,7 @@ var assert = require("assert"),
     testSource
     ;
 
-describe("Translator", function() {
+describe("Translator test", function() {
 
     it("Rigorous tests", function() {
         assert.equal(true, true);
@@ -105,7 +105,7 @@ describe("Translator", function() {
     });
 
     it("test for renderMarkdown", function() {
-        var input = "I am using __markdown__.",
+        var input = "I am using **markdown**.",
             output = "<p>I am using <strong>markdown</strong>.</p>\n";
         assert.deepEqual(translator.renderMarkdown(input), output);
     });
