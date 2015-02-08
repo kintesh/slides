@@ -8,6 +8,7 @@
     "test": "test"
   },
   "dependencies": {
+    "commander": "^2.6.0",
     "marked": "^0.3.3"
   },
   "devDependencies": {
