@@ -98,8 +98,8 @@ describe("Translator test", function() {
                 author: 'Kintesh Patel',
                 date: '28/01/2015'
             },
-            output = "<div class=\"slide\">\n<div class=\"title_title\">Sample Slides</div>" +
-                "<div class=\"title_subTitle\">The following are sample slides showing different features.</div>" +
+            output = "<div class=\"slide\">\n<div class=\"title_title\"><h1>Sample Slides</h1></div>" +
+                "<div class=\"title_subTitle\"><h3>The following are sample slides showing different features.</h3></div>" +
                 "<div class=\"title_author\">Kintesh Patel</div><div class=\"title_date\">28/01/2015</div>\n</div>\n";
         assert.deepEqual(translator.makeTitleSlide(input), output)
     });
