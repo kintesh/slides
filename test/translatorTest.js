@@ -42,10 +42,9 @@ describe("Translator test", function() {
     it("test for extractFrames", function() {
         var input = testSource,
             frameLength = 7,
-            frame0 = "# Headers\n---------\n\n# H1 header\n## H2 header\n### H3 header\n#### H4 header\n" +
-                "##### H5 header\n###### H6 header\n\n";
+            frame0 = "[[background-color:aquamarine; color:black]]\n# Headers\n---------\n\n# H1 header\n" +
+                "## H2 header\n### H3 header\n#### H4 header\n##### H5 header\n###### H6 header\n\n";
         var frames = translator.extractFrames(input);
-
         assert.equal(frameLength, frames.length);
         assert.deepEqual(frame0, frames[0]);
     });
@@ -102,6 +101,15 @@ describe("Translator test", function() {
                 "<div class=\"title_subTitle\"><h3>The following are sample slides showing different features.</h3></div>" +
                 "<div class=\"title_author\">Kintesh Patel</div><div class=\"title_date\">28/01/2015</div>\n</div>\n";
         assert.deepEqual(translator.makeTitleSlide(input), output)
+    });
+
+    it("test for readFrameProperties", function() {
+        var frames = translator.extractFrames(testSource),
+            frame0 = "# Headers\n---------\n\n# H1 header\n## H2 header\n### H3 header\n#### H4 header\n" +
+                "##### H5 header\n###### H6 header\n\n",
+            output = translator.readFrameProperties(frames[0]);
+        assert.deepEqual(output.frame, frame0);
+        assert.deepEqual(output.properties, "background-color:aquamarine; color:black");
     });
 
     it("test for renderMarkdown", function() {
