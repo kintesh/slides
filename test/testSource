@@ -4,7 +4,7 @@
 
 
 title: Sample Slides
-sub_title: The following are sample slides showing different features.
+sub_title: Sample slides showing different features.
 author: Kintesh Patel
 date: 28/01/2015
 
@@ -14,12 +14,17 @@ date: 28/01/2015
 [[background-color:aquamarine; color:black]]
 # Headers
 ---------
-
+[[visibility:reveal]]
 # H1 header
+[[visibility:reveal]]
 ## H2 header
+[[visibility:reveal]]
 ### H3 header
+[[visibility:reveal]]
 #### H4 header
+[[visibility:reveal]]
 ##### H5 header
+[[visibility:reveal]]
 ###### H6 header
 
 ====
