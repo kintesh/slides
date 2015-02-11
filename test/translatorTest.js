@@ -110,7 +110,7 @@ describe("Translator test", function() {
             frame0 = "# Headers\n---------\n[[visibility:reveal]]\n# H1 header\n[[visibility:reveal; color:red]]" +
                 "\n## H2 header\n[[visibility:reveal; color:#22FF22]]\n### H3 header\n[[visibility:reveal]]" +
                 "\n#### H4 header\n[[visibility:reveal]]\n##### H5 header\n[[visibility:reveal]]" +
-                "\n###### H6 header\n\n";
+                "\n###### H6 header\n\n",
             output = translator.readFrameProperties(frames[0]);
         assert.deepEqual(output.frame, frame0);
         assert.deepEqual(output.properties, "background-color:aquamarine; color:black");
