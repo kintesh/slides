@@ -16,9 +16,9 @@ date: 28/01/2015
 ---------
 [[visibility:reveal]]
 # H1 header
-[[visibility:reveal]]
+[[visibility:reveal; color:red]]
 ## H2 header
-[[visibility:reveal]]
+[[visibility:reveal; color:#22FF22]]
 ### H3 header
 [[visibility:reveal]]
 #### H4 header

@@ -43,8 +43,8 @@ describe("Translator test", function() {
         var input = testSource,
             frameLength = 7,
             frame0 = "[[background-color:aquamarine; color:black]]\n# Headers\n---------\n[[visibility:reveal]]" +
-                "\n# H1 header\n[[visibility:reveal]]\n## H2 header\n[[visibility:reveal]]\n### H3 header" +
-                "\n[[visibility:reveal]]\n#### H4 header\n[[visibility:reveal]]\n##### H5 header" +
+                "\n# H1 header\n[[visibility:reveal; color:red]]\n## H2 header\n[[visibility:reveal; color:#22FF22]]" +
+                "\n### H3 header\n[[visibility:reveal]]\n#### H4 header\n[[visibility:reveal]]\n##### H5 header" +
                 "\n[[visibility:reveal]]\n###### H6 header\n\n";
         var frames = translator.extractFrames(input);
         assert.equal(frameLength, frames.length);
@@ -85,10 +85,10 @@ describe("Translator test", function() {
     });
 
     it("test for replaceControlTags", function() {
-        var inputFrame = "Itemized lists look like:\n[[visibility:reveal; animation:fade]]\n  * this one\n  " +
+        var inputFrame = "Itemized lists look like:\n[[visibility:reveal; color:red]]\n  * this one\n  " +
             "* that one\n  * the other one\n",
             outputFrame = "Itemized lists look like:\n<div class=\"controlElem\" style=\"display: none;\">" +
-                "{visibility:reveal; animation:fade}</div>\n  * this one\n  * that one\n  * the other one\n";
+                "{\"visibility\":\"reveal\",\"color\":\"red\"}</div>\n  * this one\n  * that one\n  * the other one\n";
         assert.deepEqual(translator.replaceControlTags(inputFrame), outputFrame);
     });
 
@@ -107,9 +107,10 @@ describe("Translator test", function() {
 
     it("test for readFrameProperties", function() {
         var frames = translator.extractFrames(testSource),
-            frame0 = "# Headers\n---------\n[[visibility:reveal]]\n# H1 header\n[[visibility:reveal]]\n## H2 header" +
-                "\n[[visibility:reveal]]\n### H3 header\n[[visibility:reveal]]\n#### H4 header" +
-                "\n[[visibility:reveal]]\n##### H5 header\n[[visibility:reveal]]\n###### H6 header\n\n";
+            frame0 = "# Headers\n---------\n[[visibility:reveal]]\n# H1 header\n[[visibility:reveal; color:red]]" +
+                "\n## H2 header\n[[visibility:reveal; color:#22FF22]]\n### H3 header\n[[visibility:reveal]]" +
+                "\n#### H4 header\n[[visibility:reveal]]\n##### H5 header\n[[visibility:reveal]]" +
+                "\n###### H6 header\n\n";
             output = translator.readFrameProperties(frames[0]);
         assert.deepEqual(output.frame, frame0);
         assert.deepEqual(output.properties, "background-color:aquamarine; color:black");
