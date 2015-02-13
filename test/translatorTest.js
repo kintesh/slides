@@ -122,6 +122,17 @@ describe("Translator test", function() {
         assert.deepEqual(translator.renderMarkdown(input), output);
     });
 
+    it("test for renderKatex", function() {
+        var input = "$ \\pi $",
+            output = translator.extractMaths(input),
+            rendered = "<span class=\"katex\"><span class=\"katex-inner\"><span class=\"strut\" " +
+                "style=\"height:0.43056em;\"></span><span class=\"strut bottom\" style=\"height:0.43056em;" +
+                "vertical-align:0em;\"></span><span class=\"base textstyle uncramped\"><span class=\"mord " +
+                "mathit\" style=\"margin-right:0.03588em;\">π</span></span></span></span>";
+        assert.deepEqual(translator.renderKatex(output.frame, output.maths),rendered)
+
+    });
+
     it.skip("test for translate", function() {
         console.log(translator.translate(testSource));
     });
