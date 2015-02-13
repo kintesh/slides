@@ -8,6 +8,8 @@
     "slides": "bin/slides"
   },
   "directories": {
+    "assets": "assets",
+    "bin": "bin",
     "lib": "lib",
     "test": "test"
   },
