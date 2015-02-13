@@ -16,8 +16,10 @@ if (!module.parent) {
 function main(argv) {
 
     var program = require("commander"),
-        slides = require('../'),
-        fs = require("fs");
+        slides = require("../"),
+        path = require("path"),
+        fs = require("fs"),
+        fsx = require("fs-extra");
 
     program
         .version("0.0.0")
@@ -28,14 +30,14 @@ function main(argv) {
     if(argv.length <= 2) {
         return program.help();
     } else {
-        var pwd = process.env.PWD,
-            inFile = getInFileName(pwd,argv[argv.length-1]),
-            outFile = getOutFileName(inFile),
-            source = undefined,
-            output = undefined;
+        var pwd = process.cwd(),
+            inFile = path.join(pwd, argv[argv.length-1]),
+            outFile = path.join(pwd, "slides_"+argv[argv.length-1]+".html"),
+            assetsDir = path.join(path.dirname(__dirname), "assets"),
+            source,
+            output;
 
-        if (program.verbose) console.log("Reading file " + inFile);
-        if (program.verbose) console.log("Slides saved to " + outFile);
+        if (program.verbose) console.log("Reading file from: " + inFile);
 
         source = fs.readFileSync(inFile, "utf8");
 
@@ -44,19 +46,10 @@ function main(argv) {
 
             if(output != undefined) {
                 fs.writeFileSync(outFile, output, "utf8");
+                if (program.verbose) console.log("Slides saved to  : " + outFile);
+                fsx.copySync(assetsDir, path.join(pwd, "slides_assets"));
+                if (program.verbose) console.log("Assets copied to : " + path.join(pwd, "slides_assets"));
             }
         }
-    }
-
-    function getInFileName(pwd, file) {
-        if(file.charAt(0) === ".") {
-            return  pwd+file.slice(1);
-        } else {
-            return file;
-        }
-    }
-
-    function getOutFileName(inFile) {
-        return inFile+"_slides.html";
     }
 }
