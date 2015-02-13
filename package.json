@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "commander": "^2.6.0",
+    "fs-extra": "^0.16.3",
+    "katex": "^0.1.1",
     "marked": "^0.3.3"
   },
   "devDependencies": {
