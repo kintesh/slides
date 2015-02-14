@@ -1,0 +1,174 @@
+/**
+ * Created by kintesh on 14/02/15.
+ */
+
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);*/
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans');
+    src: url('../fonts/Open_Sans-Regular.eot');
+    src: url('../fonts/Open_Sans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Open_Sans-Regular.woff2') format('woff2'),
+        url('../fonts/Open_Sans-Regular.woff') format('woff'),
+        url('../fonts/Open_Sans-Regular.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold');
+    src: url('../fonts/Open_Sans-Bold.eot');
+    src: url('../fonts/Open_Sans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Open_Sans-Bold.woff2') format('woff2'),
+        url('../fonts/Open_Sans-Bold.woff') format('woff'),
+        url('../fonts/Open_Sans-Bold.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Open Sans Italic'), local('OpenSans-Italic');
+    src: url('../fonts/Open_Sans-Italic.eot');
+    src: url('../fonts/Open_Sans-Italic.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Open_Sans-Italic.woff2') format('woff2'),
+        url('../fonts/Open_Sans-Italic.woff') format('woff'),
+        url('../fonts/Open_Sans-Italic.ttf') format('ttf');
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3vh;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 3vh;
+    margin: 0;
+}
+
+body, .slide {
+    background-color: #000;
+    color: #FFF;
+}
+
+.sBar {
+    background-color: cornflowerblue;
+    height: 0.5vh;
+    margin-top: 99.5vh;
+    position: fixed;
+    width: 0vw;
+    z-index: 100;
+
+    -webkit-transition: width 0.5s ease-in-out;
+    -moz-transition: width 0.5s ease-in-out;
+    -ms-transition: width 0.5s ease-in-out;
+    -o-transition: width 0.5s ease-in-out;
+    transition: width 0.5s ease-in-out;
+}
+
+.sControls {
+    background-color: black;
+    border-radius: 10px;
+    height: 10vh;
+    margin-left: 10px;
+    margin-top: 90vh;
+    opacity: 0;
+    padding: 15px;
+    position: fixed;
+    z-index: 150;
+
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.sControls:hover {
+    opacity: 0.7;
+}
+
+.slide {
+    padding: 0 10vw;
+    width: 80vw;
+    position: fixed;
+    height: 100vh;
+
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.slide_hidden {
+    transform: translate(0vw);
+    display: none;
+    opacity: 0;
+}
+
+.slide_previous {
+    transform: translate(-100vw);
+    display: block;
+    opacity: 0;
+}
+
+.slide_current {
+    transform: translate(0vw);
+    display: block;
+    opacity: 1;
+    z-index: 10;
+}
+
+.slide_next {
+    transform: translate(100vw);
+    display: block;
+    opacity: 0;
+}
+
+
+.title_title {
+    text-align: center;
+    line-height: 50vh;
+
+}
+
+.title_subTitle {
+    text-align: center;
+
+}
+
+.title_author {
+    text-align: center;
+}
+
+.title_date {
+    text-align: center;
+}
+
+hr {
+    border: 1px dashed coral;
+}
+
+.controlled_elem {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+.hide_elem {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.reveal_elem {
+    visibility: visible;
+    opacity: 1;
+}
