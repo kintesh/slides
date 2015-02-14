@@ -40,11 +40,6 @@
         url('../fonts/Open_Sans-Italic.ttf') format('ttf');
 }
 
-* {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 3vh;
-}
-
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 3vh;
