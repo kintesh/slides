@@ -9,7 +9,11 @@ var Slides = (function($) {
         ELEM: 2
     };
 
-    var list = [], curr = -1, slides, currSlide, sBar;
+    var CSS_SLIDES = "./slides_assets/css/slides.css",
+        CSS_FONTAWESOME = "./slides_assets/css/font-awesome.css";
+
+    var list = [], curr = -1, slides, currSlide, sBar,
+        rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView;
 
     function init() {
         setupProgressbar();
@@ -20,6 +24,7 @@ var Slides = (function($) {
     }
 
     function setupSlides() {
+        rawSlides = $(".slide").clone();
         slides = $(".slide").addClass("slide_hidden");
         slides.each(function(e) {
             list.push({
@@ -128,6 +133,7 @@ var Slides = (function($) {
         $(list[index].slide).removeClass("slide_hidden slide_previous slide_current slide_next")
             .addClass("slide_current");
         $("body").css("background-color", list[index].slide.style.backgroundColor);
+        updateCurrRawSlide(index);
         currSlide = index;
     }
 
@@ -193,18 +199,23 @@ var Slides = (function($) {
         "<div id=\"cBtn_Previous\" class=\"cBtn\"><i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
         "<div id=\"cBtn_Next\" class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
         "<div id=\"cBtn_Screen\" class=\"cBtn\"><i class=\"fa fa-expand\"></i><span>Full Screen</span></div>" +
+        "<div id=\"cBtn_Console\" class=\"cBtn\"><i class=\"fa fa-th-large\"></i><span>Console</span></div>" +
         "</div>").appendTo("body").animate({opacity:"0"}, 2000);
 
-        $( "#cBtn_Previous" ).click(function() {
+        $("#cBtn_Previous" ).click(function() {
             previous();
         });
 
-        $( "#cBtn_Next" ).click(function() {
+        $("#cBtn_Next" ).click(function() {
             next();
         });
 
-        $( "#cBtn_Screen" ).click(function() {
+        $("#cBtn_Screen" ).click(function() {
             toggleFullScreen();
+        });
+
+        $("#cBtn_Console" ).click(function() {
+            openConsole();
         });
     }
 
@@ -219,6 +230,85 @@ var Slides = (function($) {
     }
 
 
+    /**
+     * Slides Console
+     */
+    function updateCurrRawSlide(index) {
+        if(currSlide == undefined)
+            currRawSlide++;
+        else {
+            if (index > currSlide)
+                currRawSlide++;
+            else
+                currRawSlide--;
+        }
+        updateConsole();
+    }
+
+    function openConsole() {
+        var consoleWindowHTML = "" +
+            "<!DOCTYPE html><html><head><title>Slides Console</title><meta charset=\"UTF-8\">" +
+            "<link rel=\"stylesheet\" href="+CSS_SLIDES+">" +
+            "<link rel=\"stylesheet\" href="+CSS_FONTAWESOME+">" +
+            "</head><body>" +
+            "<div id=\"block\" class=\"block\"><i class=\"fa fa-cog fa-spin\"></i> Loading...</div>"+
+            "<div class=\"console-top_controls\">"+
+            "<div id=\"btn_prev\" class=\"btn console-btn_prev\">"+
+            "<div class=\"cBtn\"><i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
+            "</div>"+
+            "<div id=\"btn_next\" class=\"btn console-btn_next\">"+
+            "<div class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
+            "</div>"+
+            "</div>"+
+            "<div class=\"console-views\">" +
+            "<iframe id=\"view_curr\" class=\"console-view_curr\">"+
+            "Curr"+
+            "</iframe>"+
+            "<iframe id=\"view_next\" class=\"console-view_next\">"+
+            "Next"+
+            "</iframe>"+
+            "</div>"+
+            "<div class=\"console-tools\">" +
+            "OTHER STIFF HERE!!!"+
+            "</div>"+
+            "</body></html>";
+
+        slidesConsoleWindow = window.open("","Slides Console","width=880,height=500");
+        slidesConsoleWindow.document.open();
+        slidesConsoleWindow.document.write(consoleWindowHTML);
+        slidesConsoleWindow.document.close();
+
+        $(slidesConsoleWindow.document).ready(function () {
+            $("#btn_prev", slidesConsoleWindow.document).click(function() {
+                previous();
+            });
+
+            $("#btn_next", slidesConsoleWindow.document).click(function() {
+                next();
+            });
+
+            consoleCurrView = $("#view_curr", slidesConsoleWindow.document);
+            consoleNextView = $("#view_next", slidesConsoleWindow.document);
+            setTimeout(function refresh() {
+                updateConsole();
+                $("#block", slidesConsoleWindow.document).hide("slow");
+            }, 2000);
+        });
+    }
+
+    function updateConsole() {
+        if(consoleCurrView != undefined && consoleNextView != undefined) {
+            if (currRawSlide != undefined && currRawSlide < rawSlides.length) {
+                consoleCurrView.contents().find("body").html(rawSlides[currRawSlide]);
+                consoleCurrView.contents().find("head").html("<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">");
+            }
+            if (currRawSlide != undefined && currRawSlide + 1 < rawSlides.length) {
+                consoleNextView.contents().find("body").html(rawSlides[currRawSlide + 1]);
+                consoleNextView.contents().find("head").html("<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">");
+            }
+        }
+    }
+
 
     /**
      * Events
@@ -232,6 +322,8 @@ var Slides = (function($) {
             previous();
         } else if (event.keyCode == 13) {
             toggleFullScreen();
+        } else if(event.which == 67 || event.which == 99) {
+            openConsole();
         }
     });
 
@@ -252,7 +344,7 @@ var Slides = (function($) {
             } else if (document.documentElement.webkitRequestFullscreen) {
                 document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
             }
-            $( "#cBtn_Screen").html("<i class=\"fa fa-compress\"></i><span>Restore</span>");
+            $("#cBtn_Screen").html("<i class=\"fa fa-compress\"></i><span>Restore</span>");
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -263,7 +355,7 @@ var Slides = (function($) {
             } else if (document.webkitExitFullscreen) {
                 document.webkitExitFullscreen();
             }
-            $( "#cBtn_Screen").html("<i class=\"fa fa-expand\"></i><span>Full Screen</span>");
+            $("#cBtn_Screen").html("<i class=\"fa fa-expand\"></i><span>Full Screen</span>");
         }
     }
 
