@@ -228,3 +228,79 @@ img {
     margin-right: auto;
     display: block;
 }
+
+
+/**
+ * Slides Console
+ */
+
+.block {
+    z-index: 1000;
+    text-align: center;
+    font-size: 10vh;
+    background: none repeat scroll 0% 0% rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    opacity: 0.96;
+    line-height: 90vh;
+}
+
+.console-top_controls {
+    position: absolute;
+    background-color: rgb(34, 34, 34);
+    height: 100vh;
+    color: rgb(240, 240, 240);
+    text-align: center;
+    width: 10vh;
+    top:0;
+}
+
+.console-top_controls .btn {
+    cursor: pointer;
+    text-align: center;
+    margin-top: 2vh;
+}
+
+.console-top_controls .btn:hover {
+    background-color: #2f6fad;
+}
+
+.console-top_controls .btn .cBtn i {
+    display: block;
+    font-size: 3vh;
+    padding: 1.5vh;
+}
+
+.console-top_controls .btn .cBtn:hover > i {
+    font-size: 4vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.console-top_controls .btn .cBtn span {
+    font-size: 1.5vh;
+}
+
+.console-views, .console-tools {
+    margin-left: 11vh;
+    margin-top: 1vh;
+}
+
+
+.console-view_curr, .console-view_next {
+    border: 1px solid #000;
+}
+
+.console-view_curr {
+    width: 45vw;
+    height: 60vh;
+}
+
+.console-view_next {
+    width: 45vw;
+    height: 55vh;
+    margin-left: 1vh;
+}
