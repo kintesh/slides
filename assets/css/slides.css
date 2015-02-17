@@ -42,19 +42,24 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 3vh;
+    font-size: 2.5vh;
     margin: 0;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 }
 
 body, .slide {
-    background-color: #000;
-    color: #FFF;
+    background-color: #f0f0f0;
+    color: #000;
 }
 
 .sBar {
     background-color: cornflowerblue;
     height: 0.5vh;
-    margin-top: 99.5vh;
+    bottom: 0;
     position: fixed;
     width: 0vw;
     z-index: 100;
@@ -68,13 +73,14 @@ body, .slide {
 
 .sControls {
     background-color: black;
+    color: #FFF;
+    border: 2px solid #999;
     border-radius: 10px;
-    height: 10vh;
-    margin-left: 10px;
-    margin-top: 90vh;
-    opacity: 0;
-    padding: 15px;
-    position: fixed;
+    bottom: 2vh;
+    left: 2vh;
+    opacity: 0.8;
+    padding: 10px;
+    position: absolute;
     z-index: 150;
 
     -webkit-transition: all 0.5s ease-in-out;
@@ -85,7 +91,31 @@ body, .slide {
 }
 
 .sControls:hover {
-    opacity: 0.7;
+    opacity: 0.8 !important;
+}
+
+.sControls .cBtn {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    width: 10vh;
+    float: left;
+}
+
+.cBtn i {
+    display: block;
+    font-size: 3vh;
+    padding: 1.5vh;
+}
+
+.cBtn span {
+    font-size: 1.5vh;
+}
+
+.cBtn:hover > i {
+    font-size: 4vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
 
 .slide {
@@ -109,7 +139,7 @@ body, .slide {
 }
 
 .slide_previous {
-    transform: translate(-100vw);
+    transform:  scale(1.2,1.2);
     display: block;
     opacity: 0;
 }
@@ -122,7 +152,7 @@ body, .slide {
 }
 
 .slide_next {
-    transform: translate(100vw);
+    transform:  scale(0.8,0.8);
     display: block;
     opacity: 0;
 }
@@ -131,7 +161,6 @@ body, .slide {
 .title_title {
     text-align: center;
     line-height: 50vh;
-
 }
 
 .title_subTitle {
@@ -166,4 +195,36 @@ hr {
 .reveal_elem {
     visibility: visible;
     opacity: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #98bf21;
+}
+
+table td, table th {
+    font-size: 1em;
+    border-right: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+
+table th {
+    font-size: 1.1em;
+    text-align: left;
+    background-color: #A7C942;
+    color: #ffffff;
+    border-bottom: 1px solid #98BF21;
+}
+
+table tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+img {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
