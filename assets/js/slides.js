@@ -13,13 +13,15 @@ var Slides = (function($) {
         CSS_FONTAWESOME = "./slides_assets/css/font-awesome.css";
 
     var list = [], curr = -1, slides, currSlide, sBar,
-        rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView;
+        rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView,
+        startTime, currSlideStartTime;
 
     function init() {
         setupProgressbar();
         setupControls();
         setupSlides();
         //console.log("list length: " + list.length);
+        startTime = Date.now();
         nextItem();
     }
 
@@ -135,6 +137,7 @@ var Slides = (function($) {
         $("body").css("background-color", list[index].slide.style.backgroundColor);
         updateCurrRawSlide(index);
         currSlide = index;
+        currSlideStartTime = Date.now();
     }
 
     function revealElem(cElem) {
@@ -247,29 +250,29 @@ var Slides = (function($) {
 
     function openConsole() {
         var consoleWindowHTML = "" +
-            "<!DOCTYPE html><html><head><title>Slides Console</title><meta charset=\"UTF-8\">" +
-            "<link rel=\"stylesheet\" href="+CSS_SLIDES+">" +
-            "<link rel=\"stylesheet\" href="+CSS_FONTAWESOME+">" +
+            "<!DOCTYPE html><html><head><title>Slides Console</title><meta charset='UTF-8'>" +
+            "<link rel='stylesheet' href="+CSS_SLIDES+">" +
+            "<link rel='stylesheet' href="+CSS_FONTAWESOME+">" +
             "</head><body>" +
-            "<div id=\"block\" class=\"block\"><i class=\"fa fa-cog fa-spin\"></i> Loading...</div>"+
-            "<div class=\"console-top_controls\">"+
-            "<div id=\"btn_prev\" class=\"btn console-btn_prev\">"+
-            "<div class=\"cBtn\"><i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
+            "<div id='block' class='block'><i class='fa fa-cog fa-spin'></i> Loading...</div>"+
+            "<div class='console-top_controls'>"+
+            "<div id='btn_prev' class='btn console-btn_prev'>"+
+            "<div class='cBtn'><i class='fa fa-backward'></i><span>Previous</span></div>" +
             "</div>"+
-            "<div id=\"btn_next\" class=\"btn console-btn_next\">"+
-            "<div class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
+            "<div id='btn_next' class='btn console-btn_next'>"+
+            "<div class='cBtn'><i class='fa fa-forward'></i><span>Next</span></div>" +
             "</div>"+
             "</div>"+
-            "<div class=\"console-views\">" +
-            "<iframe id=\"view_curr\" class=\"console-view_curr\">"+
-            "Curr"+
-            "</iframe>"+
-            "<iframe id=\"view_next\" class=\"console-view_next\">"+
-            "Next"+
-            "</iframe>"+
+            "<div class='console-views'>" +
+            "<iframe id='view_curr' class='console-view_curr'></iframe>"+
+            "<iframe id='view_next' class='console-view_next'></iframe>"+
             "</div>"+
-            "<div class=\"console-tools\">" +
-            "OTHER STIFF HERE!!!"+
+            "<div class='console-tools'>" +
+            "<div id='today' class='today'>Wednesday, 18 February 2015</div>" +
+            "<div class='durations'>" +
+            "<div class='duration'><span id='dur_slide' class='duration-time'>00:6:26</span><br><span class='duration-lbl'>Slide</span></div>"+
+            "<div class='duration'><span id='dur_total' class='duration-time'>00:35:59</span><br><span class='duration-lbl'>Total</span></div>" +
+            "</div>"+
             "</div>"+
             "</body></html>";
 
@@ -277,6 +280,8 @@ var Slides = (function($) {
         slidesConsoleWindow.document.open();
         slidesConsoleWindow.document.write(consoleWindowHTML);
         slidesConsoleWindow.document.close();
+
+        var slideT, totalT;
 
         $(slidesConsoleWindow.document).ready(function () {
             $("#btn_prev", slidesConsoleWindow.document).click(function() {
@@ -287,11 +292,25 @@ var Slides = (function($) {
                 next();
             });
 
+            setInterval(function() {
+                $("#today", slidesConsoleWindow.document).html(new Date().toGMTString().slice(0, -4));
+                slideT = new Date(Date.now() - currSlideStartTime);
+                totalT = new Date(Date.now() - startTime);
+                $("#dur_slide", slidesConsoleWindow.document).html(
+                    (slideT.getUTCHours()<10 ? "0"+slideT.getUTCHours() : slideT.getUTCHours()) + ":" +
+                    (slideT.getUTCMinutes()<10 ? "0"+slideT.getUTCMinutes() : slideT.getUTCMinutes()) + ":" +
+                    (slideT.getUTCSeconds()<10 ? "0"+slideT.getUTCSeconds() : slideT.getUTCSeconds()));
+                $("#dur_total", slidesConsoleWindow.document).html(
+                    (totalT.getUTCHours()<10 ? "0"+totalT.getUTCHours() : totalT.getUTCHours()) + ":" +
+                    (totalT.getUTCMinutes()<10 ? "0"+totalT.getUTCMinutes() : totalT.getUTCMinutes()) + ":" +
+                    (totalT.getUTCSeconds()<10 ? "0"+totalT.getUTCSeconds() : totalT.getUTCSeconds()));
+            }, 1000);
+
             consoleCurrView = $("#view_curr", slidesConsoleWindow.document);
             consoleNextView = $("#view_next", slidesConsoleWindow.document);
             setTimeout(function refresh() {
                 updateConsole();
-                $("#block", slidesConsoleWindow.document).hide("slow");
+                $("#block", slidesConsoleWindow.document).fadeOut("slow");
             }, 2000);
         });
     }
@@ -300,11 +319,11 @@ var Slides = (function($) {
         if(consoleCurrView != undefined && consoleNextView != undefined) {
             if (currRawSlide != undefined && currRawSlide < rawSlides.length) {
                 consoleCurrView.contents().find("body").html(rawSlides[currRawSlide]);
-                consoleCurrView.contents().find("head").html("<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">");
+                consoleCurrView.contents().find("head").html("<link rel='stylesheet' href=" + CSS_SLIDES + ">");
             }
             if (currRawSlide != undefined && currRawSlide + 1 < rawSlides.length) {
                 consoleNextView.contents().find("body").html(rawSlides[currRawSlide + 1]);
-                consoleNextView.contents().find("head").html("<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">");
+                consoleNextView.contents().find("head").html("<link rel='stylesheet' href=" + CSS_SLIDES + ">");
             }
         }
     }
