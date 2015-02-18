@@ -325,3 +325,31 @@ img {
 .duration-time {
     font-size: 5vh;
 }
+
+.sHelp {
+    background-color: rgba(0, 0, 0, 0.94);
+    position: absolute;
+    z-index: 1000;
+    margin-top: 15%;
+    text-align: center;
+    color: #FFF;
+    padding: 2vh;
+}
+
+.sHelp .btn_close {
+    color: indianred;
+    font-size: 4vh;
+    right: 2vh;
+    position: absolute;
+    top: 0;
+}
+
+.sHelp .btn_close:hover {
+    color: brown;
+    cursor: pointer;
+}
+
+.sHelp img {
+    width: 80%;
+    margin-bottom: 25px;
+}
