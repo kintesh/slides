@@ -14,11 +14,12 @@ var Slides = (function($) {
 
     var list = [], curr = -1, slides, currSlide, sBar,
         rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView,
-        startTime, currSlideStartTime;
+        startTime, currSlideStartTime, helpMenu;
 
     function init() {
         setupProgressbar();
         setupControls();
+        setupHelp();
         setupSlides();
         //console.log("list length: " + list.length);
         startTime = Date.now();
@@ -203,6 +204,7 @@ var Slides = (function($) {
         "<div id=\"cBtn_Next\" class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
         "<div id=\"cBtn_Screen\" class=\"cBtn\"><i class=\"fa fa-expand\"></i><span>Full Screen</span></div>" +
         "<div id=\"cBtn_Console\" class=\"cBtn\"><i class=\"fa fa-th-large\"></i><span>Console</span></div>" +
+        "<div id=\"cBtn_Help\" class=\"cBtn\"><i class=\"fa fa-life-ring\"></i><span>Help</span></div>" +
         "</div>").appendTo("body").animate({opacity:"0"}, 2000);
 
         $("#cBtn_Previous" ).click(function() {
@@ -220,6 +222,24 @@ var Slides = (function($) {
         $("#cBtn_Console" ).click(function() {
             openConsole();
         });
+
+        $("#cBtn_Help" ).click(function() {
+            toggleHelp();
+        });
+    }
+
+    function setupHelp() {
+        helpMenu = $("<div id='sHelp' class='sHelp'>" +
+        "Use keybord to navigate.<span id='hBtn_close' class='btn_close'><i class='fa fa-times'></i></span><br>" +
+        "<img src='./slides_assets/images/help.png'></div>").appendTo("body").delay(2000).fadeOut("slow");
+
+        $("#hBtn_close").click(function() {
+            toggleHelp();
+        });
+    }
+
+    function toggleHelp() {
+        helpMenu.fadeToggle("slow");
     }
 
     function next() {
@@ -343,6 +363,8 @@ var Slides = (function($) {
             toggleFullScreen();
         } else if(event.which == 67 || event.which == 99) {
             openConsole();
+        } else if(event.which == 72 || event.which == 104) {
+            toggleHelp();
         }
     });
 
