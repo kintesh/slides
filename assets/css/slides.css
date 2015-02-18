@@ -304,3 +304,24 @@ img {
     height: 55vh;
     margin-left: 1vh;
 }
+
+.console-tools .today {
+    font-size: 3vh;
+    font-weight: bold;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+}
+
+.console-tools .duration {
+    float: left;
+    width: 15vw;
+    text-align: center;
+}
+
+.duration-lbl {
+    font-size: 2vh;
+}
+
+.duration-time {
+    font-size: 5vh;
+}
