@@ -19,7 +19,8 @@ function main(argv) {
         slides = require("../"),
         path = require("path"),
         fs = require("fs"),
-        fsx = require("fs-extra");
+        fsx = require("fs-extra"),
+        async = require("async");
 
     program
         .version("0.0.0")
@@ -35,21 +36,30 @@ function main(argv) {
             outFile = path.join(pwd, "slides_"+argv[argv.length-1]+".html"),
             assetsDir = path.join(path.dirname(__dirname), "assets"),
             source,
-            output;
+            output,
+            startTime = Date.now();
 
-        if (program.verbose) console.log("Reading file from: " + inFile);
-
-        source = fs.readFileSync(inFile, "utf8");
-
-        if(source != undefined) {
-            output = slides(source);
-
-            if(output != undefined) {
-                fs.writeFileSync(outFile, output, "utf8");
-                if (program.verbose) console.log("Slides saved to  : " + outFile);
-                fsx.copySync(assetsDir, path.join(pwd, "slides_assets"));
+        async.waterfall([
+            function(callback) {
+                if (program.verbose) console.log("Reading file from: " + inFile);
+                fs.readFile(inFile, "utf8", callback);
+            },
+            function(data, callback) {
+                if (program.verbose) console.log("Making slides...");
+                slides(data, callback);
+            },
+            function(result, callback) {
+                if (program.verbose) console.log("Saving to : " + outFile);
+                fs.writeFile(outFile, result.html, "utf8", callback)
+            },
+            function(callback) {
                 if (program.verbose) console.log("Assets copied to : " + path.join(pwd, "slides_assets"));
+                fsx.copy(assetsDir, path.join(pwd, "slides_assets"), callback)
             }
-        }
+        ], function(err) {
+            if(err == null) {
+                console.log("DONE! " + (Date.now() - startTime) +"ms");
+            }
+        });
     }
 }
