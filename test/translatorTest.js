@@ -246,7 +246,7 @@ describe("Translator", function() {
     it("test for renderMathJax", function(done) {
         var input = "$ \\pi $",
             expOut = "<span class=\"inlineMath\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"+
-            "<mi>&#x03C0;<!-- π --></mi>\n</math></span>";
+            "  <mi>&#x03C0;<!-- π --></mi>\n</math></span>";
         async.waterfall([
             function(callback) {
                 translator.extractMaths({frames:[{content:input}]}, callback);
