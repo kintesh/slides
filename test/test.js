@@ -16,7 +16,6 @@ describe("Slides", function() {
             output = "<!DOCTYPE html>\n<html>\n<head>\n<title>Slides</title>\n<meta charset=\"UTF-8\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides-print.css\" media=\"print\" />" +
-                "<link rel=\"stylesheet\" href=\"./slides_assets/css/katex.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/font-awesome.css\">\n" +
                 "<script src=\"./slides_assets/js/jquery.js\"></script>\n" +
                 "<script src=\"./slides_assets/js/slides.js\"></script></head>" +

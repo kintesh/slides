@@ -211,27 +211,6 @@ describe("Translator", function() {
         });
     });
 
-    it("test for renderKatex", function(done) {
-        var input = "$ \\pi $",
-            expOut = "<span class=\"katex\"><span class=\"katex-inner\"><span class=\"strut\" " +
-                "style=\"height:0.43056em;\"></span><span class=\"strut bottom\" style=\"height:0.43056em;" +
-                "vertical-align:0em;\"></span><span class=\"base textstyle uncramped\"><span class=\"mord " +
-                "mathit\" style=\"margin-right:0.03588em;\">π</span></span></span></span>";
-        async.waterfall([
-            function(callback) {
-                translator.extractMaths({frames:[{content:input}]}, callback);
-            },
-            function(slides, callback) {
-                translator.renderKatex(slides, callback);
-            }
-        ], function(err, res) {
-            if(err == null) {
-                assert.deepEqual(res.frames[0].content, expOut);
-                done();
-            }
-        });
-    });
-
     it("test for translate", function(done) {
         async.waterfall([
             function(callback) {
