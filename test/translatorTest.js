@@ -10,11 +10,12 @@ var assert = require("assert"),
 
 describe("Translator", function() {
 
-    it.skip("Rigorous tests", function() {
+    it("Rigorous tests", function() {
         assert.equal(true, true);
         assert.notEqual(true, false);
         assert.notDeepEqual(translator, {});
         assert.notDeepEqual(fs, {});
+        assert.notDeepEqual(async, {});
     });
 
     it("Test removeComments(source)", function(done) {
@@ -240,6 +241,25 @@ describe("Translator", function() {
             assert.notDeepEqual(res.html,undefined);
             done();
         })
+    });
+
+    it("test for renderMathJax", function(done) {
+        var input = "$ \\pi $",
+            expOut = "<span class=\"inlineMath\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"+
+            "<mi>&#x03C0;<!-- π --></mi>\n</math></span>";
+        async.waterfall([
+            function(callback) {
+                translator.extractMaths({frames:[{content:input}]}, callback);
+            },
+            function(slides, callback) {
+                translator.renderMathJax(slides, callback);
+            }
+        ], function(err, res) {
+            if(err === null) {
+                assert.deepEqual(res.frames[0].content, expOut);
+                done();
+            }
+        });
     });
 
 });

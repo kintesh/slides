@@ -14,6 +14,7 @@
     "test": "test"
   },
   "dependencies": {
+    "MathJax-node": "https://github.com/mathjax/MathJax-node/tarball/master",
     "async": "^0.9.0",
     "commander": "^2.6.0",
     "fs-extra": "^0.16.3",
