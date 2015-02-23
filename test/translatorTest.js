@@ -5,8 +5,7 @@ var assert = require("assert"),
     translator = require("../lib/translator"),
     fs = require("fs"),
     async = require("async"),
-    testSource
-    ;
+    testSource;
 
 describe("Translator", function() {
 
@@ -115,9 +114,9 @@ describe("Translator", function() {
         var inputFrame = "Inline math equations go in like so: %{MATH0}. Display math should get its own " +
                 "line and be put in in double-dollarsigns:\n\n%{MATH1}\n\nAnd note that you can backslash-escape " +
                 "any punctuation characters.",
-            expOutFrame = "Inline math equations go in like so: <span class=\"inlineMath\"> \\omega = d\\phi / dt " +
-                "</span>. Display math should get its own line and be put in in double-dollarsigns:\n\n" +
-                "<p class=\"blockMath\"> I = \\int \\rho R^{2} dV </p>\n\nAnd note that you can " +
+            expOutFrame = "Inline math equations go in like so: <span class=\"inlineMath\">\\( \\omega = d\\phi / dt " +
+                "\\)</span>. Display math should get its own line and be put in in double-dollarsigns:\n\n" +
+                "<p class=\"blockMath\">\\( I = \\int \\rho R^{2} dV \\)</p>\n\nAnd note that you can " +
                 "backslash-escape any punctuation characters.",
             maths = [
                 { type: 0, value: " \\omega = d\\phi / dt " },
@@ -220,25 +219,6 @@ describe("Translator", function() {
             assert.notDeepEqual(res.html,undefined);
             done();
         })
-    });
-
-    it("test for renderMathJax", function(done) {
-        var input = "$ \\pi $",
-            expOut = "<span class=\"inlineMath\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\">\n"+
-            "  <mi>&#x03C0;<!-- π --></mi>\n</math></span>";
-        async.waterfall([
-            function(callback) {
-                translator.extractMaths({frames:[{content:input}]}, callback);
-            },
-            function(slides, callback) {
-                translator.renderMathJax(slides, callback);
-            }
-        ], function(err, res) {
-            if(err === null) {
-                assert.deepEqual(res.frames[0].content, expOut);
-                done();
-            }
-        });
     });
 
 });

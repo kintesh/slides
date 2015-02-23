@@ -10,7 +10,8 @@ var Slides = (function($) {
     };
 
     var CSS_SLIDES = "./slides_assets/css/slides.css",
-        CSS_FONTAWESOME = "./slides_assets/css/font-awesome.css";
+        CSS_FONTAWESOME = "./slides_assets/css/font-awesome.css",
+        JS_MATHJAX = "./slides_assets/js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
 
     var list = [], curr = -1, slides, currSlide, sBar,
         rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView,
@@ -229,9 +230,9 @@ var Slides = (function($) {
     }
 
     function setupHelp() {
-        helpMenu = $("<div id='sHelp' class='sHelp'>" +
-        "Use keybord to navigate.<span id='hBtn_close' class='btn_close'><i class='fa fa-times'></i></span><br>" +
-        "<img src='./slides_assets/images/help.png'></div>").appendTo("body").delay(2000).fadeOut("slow");
+        helpMenu = $("<div id=\"sHelp\" class=\"sHelp\">" +
+        "Use keybord to navigate.<span id=\"hBtn_close\" class=\"btn_close\"><i class=\"fa fa-times\"></i></span><br>" +
+        "<img src=\"./slides_assets/images/help.png\"></div>").appendTo("body").delay(2000).fadeOut("slow");
 
         $("#hBtn_close").click(function() {
             toggleHelp();
@@ -270,28 +271,28 @@ var Slides = (function($) {
 
     function openConsole() {
         var consoleWindowHTML = "" +
-            "<!DOCTYPE html><html><head><title>Slides Console</title><meta charset='UTF-8'>" +
-            "<link rel='stylesheet' href="+CSS_SLIDES+">" +
-            "<link rel='stylesheet' href="+CSS_FONTAWESOME+">" +
+            "<!DOCTYPE html><html><head><title>Slides Console</title><meta charset=\"UTF-8\">" +
+            "<link rel=\"stylesheet\" href="+CSS_SLIDES+">" +
+            "<link rel=\"stylesheet\" href="+CSS_FONTAWESOME+">" +
             "</head><body>" +
-            "<div id='block' class='block'><i class='fa fa-cog fa-spin'></i> Loading...</div>"+
-            "<div class='console-top_controls'>"+
-            "<div id='btn_prev' class='btn console-btn_prev'>"+
-            "<div class='cBtn'><i class='fa fa-backward'></i><span>Previous</span></div>" +
+            "<div id=\"block\" class=\"block\"><i class=\"fa fa-cog fa-spin\"></i> Loading...</div>"+
+            "<div class=\"console-top_controls\">"+
+            "<div id=\"btn_prev\" class=\"btn console-btn_prev\">"+
+            "<div class=\"cBtn\"><i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
             "</div>"+
-            "<div id='btn_next' class='btn console-btn_next'>"+
-            "<div class='cBtn'><i class='fa fa-forward'></i><span>Next</span></div>" +
+            "<div id=\"btn_next\" class=\"btn console-btn_next\">"+
+            "<div class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
             "</div>"+
             "</div>"+
-            "<div class='console-views'>" +
-            "<iframe id='view_curr' class='console-view_curr'></iframe>"+
-            "<iframe id='view_next' class='console-view_next'></iframe>"+
+            "<div class=\"console-views\">" +
+            "<iframe id=\"view_curr\" class=\"console-view_curr\">Current Slide</iframe>"+
+            "<iframe id=\"view_next\" class=\"console-view_next\">Next Slide</iframe>"+
             "</div>"+
-            "<div class='console-tools'>" +
-            "<div id='today' class='today'>Wednesday, 18 February 2015</div>" +
-            "<div class='durations'>" +
-            "<div class='duration'><span id='dur_slide' class='duration-time'>00:6:26</span><br><span class='duration-lbl'>Slide</span></div>"+
-            "<div class='duration'><span id='dur_total' class='duration-time'>00:35:59</span><br><span class='duration-lbl'>Total</span></div>" +
+            "<div class=\"console-tools\">" +
+            "<div id=\"today\" class=\"today\">Wednesday, 18 February 2015</div>" +
+            "<div class=\"durations\">" +
+            "<div class=\"duration\"><span id=\"dur_slide\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Slide</span></div>"+
+            "<div class=\"duration\"><span id=\"dur_total\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Total</span></div>" +
             "</div>"+
             "</div>"+
             "</body></html>";
@@ -328,24 +329,29 @@ var Slides = (function($) {
 
             consoleCurrView = $("#view_curr", slidesConsoleWindow.document);
             consoleNextView = $("#view_next", slidesConsoleWindow.document);
+            updateConsole();
             setTimeout(function refresh() {
-                updateConsole();
                 $("#block", slidesConsoleWindow.document).fadeOut("slow");
-            }, 2000);
+            }, 1000);
         });
     }
 
     function updateConsole() {
         if(consoleCurrView != undefined && consoleNextView != undefined) {
             if (currRawSlide != undefined && currRawSlide < rawSlides.length) {
-                consoleCurrView.contents().find("body").html(rawSlides[currRawSlide]);
-                consoleCurrView.contents().find("head").html("<link rel='stylesheet' href=" + CSS_SLIDES + ">");
+                consoleCurrView.prop("srcdoc", getIFrameSrcdoc(rawSlides[currRawSlide]))
             }
             if (currRawSlide != undefined && currRawSlide + 1 < rawSlides.length) {
-                consoleNextView.contents().find("body").html(rawSlides[currRawSlide + 1]);
-                consoleNextView.contents().find("head").html("<link rel='stylesheet' href=" + CSS_SLIDES + ">");
+                consoleNextView.prop("srcdoc", getIFrameSrcdoc(rawSlides[currRawSlide + 1]))
             }
         }
+    }
+
+    function getIFrameSrcdoc(slide) {
+        return "<!DOCTYPE html><html><head lang=\"en\"><meta charset=\"UTF-8\">" +
+            "<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">" +
+            "<script type=\"text/javascript\" src="+ JS_MATHJAX +"></script></head>" +
+            "<body>"+slide.outerHTML+"</body></html>";
     }
 
 
