@@ -58,7 +58,7 @@ function main(argv) {
             }
         ], function(err) {
             if(err == null) {
-                console.log("DONE! " + (Date.now() - startTime) +"ms");
+                if (program.verbose) console.log("DONE! " + (Date.now() - startTime) +"ms");
             }
         });
     }
