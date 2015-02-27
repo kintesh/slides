@@ -2,44 +2,6 @@
  * Created by kintesh on 14/02/15.
  */
 
-/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic);*/
-
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans'), local('OpenSans');
-    src: url('../fonts/Open_Sans-Regular.eot');
-    src: url('../fonts/Open_Sans-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Open_Sans-Regular.woff2') format('woff2'),
-        url('../fonts/Open_Sans-Regular.woff') format('woff'),
-        url('../fonts/Open_Sans-Regular.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Open Sans Bold'), local('OpenSans-Bold');
-    src: url('../fonts/Open_Sans-Bold.eot');
-    src: url('../fonts/Open_Sans-Bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Open_Sans-Bold.woff2') format('woff2'),
-        url('../fonts/Open_Sans-Bold.woff') format('woff'),
-        url('../fonts/Open_Sans-Bold.ttf') format('ttf');
-}
-
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 400;
-    src: local('Open Sans Italic'), local('OpenSans-Italic');
-    src: url('../fonts/Open_Sans-Italic.eot');
-    src: url('../fonts/Open_Sans-Italic.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Open_Sans-Italic.woff2') format('woff2'),
-        url('../fonts/Open_Sans-Italic.woff') format('woff'),
-        url('../fonts/Open_Sans-Italic.ttf') format('ttf');
-}
-
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 2.6vh;

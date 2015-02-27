@@ -14,6 +14,7 @@ describe("Slides", function() {
     it("test for translate", function(done) {
         var input = "====\n# -> Welcome to slides <-\n**Slides** is a tool to *make* and *present* HTML5 slides.====",
             output = "<!DOCTYPE html>\n<html>\n<head>\n<title>Slides</title>\n<meta charset=\"UTF-8\">\n" +
+                "<link rel=\"stylesheet\" href=\"./slides_assets/css/fonts.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides-print.css\" media=\"print\" />\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/font-awesome.css\">\n" +
