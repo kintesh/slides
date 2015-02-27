@@ -123,6 +123,7 @@ body, .slide {
 .title_title {
     text-align: center;
     line-height: 50vh;
+    font-size: 4vh;
 }
 
 .title_subTitle {
@@ -289,18 +290,19 @@ img {
 }
 
 .sHelp {
-    background-color: rgba(0, 0, 0, 0.94);
+    background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
     z-index: 1000;
-    margin-top: 10%;
     text-align: center;
     color: #FFF;
-    padding: 2vh;
+    width: 100%;
+    height: 100%;
+    display: none;
 }
 
 .sHelp .btn_close {
     color: indianred;
-    font-size: 4vh;
+    font-size: 5vh;
     right: 2vh;
     position: absolute;
     top: 0;
@@ -314,4 +316,20 @@ img {
 .sHelp img {
     width: 80%;
     margin-bottom: 25px;
+}
+
+.help_table {
+    display: table;
+    width: 50%;
+    margin: 5vh auto;
+}
+
+.help_table_row {
+    display: table-row;
+}
+
+.help_table_cell {
+    display: table-cell;
+    padding: 1vh;
+    border-bottom: 2px solid #333333;
 }

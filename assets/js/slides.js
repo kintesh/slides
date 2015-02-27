@@ -230,9 +230,21 @@ var Slides = (function($) {
     }
 
     function setupHelp() {
-        helpMenu = $("<div id=\"sHelp\" class=\"sHelp\">" +
-        "Use keybord to navigate.<span id=\"hBtn_close\" class=\"btn_close\"><i class=\"fa fa-times\"></i></span><br>" +
-        "<img src=\"./slides_assets/images/help.png\"></div>").appendTo("body").delay(2000).fadeOut("slow");
+        helpMenu = $("<div id=\"sHelp\" class=\"sHelp\"><div>" +
+        "<span id=\"hBtn_close\" class=\"btn_close\"><i class=\"fa fa-times\"></i></span>" +
+        "<h2>Slides help</h2>Use keyboard to navigate.</div>" +
+        "<div class=\"help_table\">" +
+        "<div class=\"help_table_row\"><div class=\"help_table_cell\">Next </div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-right\"></i>&nbsp;&nbsp;&nbsp;<i class=\"fa fa-arrow-down\"></i></div></div>" +
+        "<div class=\"help_table_row\"><div class=\"help_table_cell\">Previous </div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-left\"></i>&nbsp;&nbsp;&nbsp;<i class=\"fa fa-arrow-up\"></i></div></div>" +
+        "<div class=\"help_table_row\"><div class=\"help_table_cell\">Full Screen </div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-level-down\" style=\"transform: rotate(90deg);\"></i>&nbsp;&nbsp;&nbsp;F</div></div>" +
+        "<div class=\"help_table_row\"><div class=\"help_table_cell\">Console </div>" +
+        "<div class=\"help_table_cell\">C</div></div>" +
+        "<div class=\"help_table_row\"><div class=\"help_table_cell\">Help </div>" +
+        "<div class=\"help_table_cell\">H</div>" +
+        "</div></div></div>").appendTo("body");
 
         $("#hBtn_close").click(function() {
             toggleHelp();
@@ -365,7 +377,7 @@ var Slides = (function($) {
             next();
         } else if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 44) {
             previous();
-        } else if (event.keyCode == 13) {
+        } else if (event.keyCode == 13 || event.which == 70 || event.which == 102) {
             toggleFullScreen();
         } else if(event.which == 67 || event.which == 99) {
             openConsole();

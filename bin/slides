@@ -25,6 +25,7 @@ function main(argv) {
     program
         .version("0.0.0")
         .usage("[options] [source file]")
+        .option("-o, --online", "Single file output, requires internet connection for presentation.")
         .option("-v, --verbose", "Print verbose output on console")
         .parse(process.argv);
 
@@ -50,11 +51,19 @@ function main(argv) {
             },
             function(result, callback) {
                 if (program.verbose) console.log("Saving to : " + outFile);
-                fs.writeFile(outFile, result.html, "utf8", callback)
+                if(program.online) {
+                    fs.writeFile(outFile, result.online, "utf8", callback);
+                } else {
+                    fs.writeFile(outFile, result.offline, "utf8", callback);
+                }
             },
             function(callback) {
-                if (program.verbose) console.log("Assets copied to : " + path.join(pwd, "slides_assets"));
-                fsx.copy(assetsDir, path.join(pwd, "slides_assets"), callback)
+                if(!program.online) {
+                    if (program.verbose) console.log("Assets copied to : " + path.join(pwd, "slides_assets"));
+                    fsx.copy(assetsDir, path.join(pwd, "slides_assets"), callback);
+                } else {
+                    callback();
+                }
             }
         ], function(err) {
             if(err == null) {
