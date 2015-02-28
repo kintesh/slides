@@ -4,6 +4,7 @@
   "description": "A tool to make and present HTML5 slides",
   "main": "index.js",
   "preferGlobal": "true",
+  "private": true,
   "bin": {
     "slides": "bin/slides"
   },
