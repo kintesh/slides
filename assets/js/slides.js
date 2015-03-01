@@ -9,15 +9,17 @@ var Slides = (function($) {
         ELEM: 2
     };
 
-    var CSS_SLIDES = "./slides_assets/css/slides.css",
-        CSS_FONTAWESOME = "./slides_assets/css/font-awesome.css",
-        JS_MATHJAX = "./slides_assets/js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    var CSS_SLIDES, CSS_FONTAWESOME, JS_MATHJAX;
 
     var list = [], curr = -1, slides, currSlide, sBar,
         rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView,
         startTime, currSlideStartTime, helpMenu;
 
     function init() {
+        var head = $("head").html();
+        CSS_SLIDES = /"([\S]*slides\.css[\S]*)"/.exec(head)[1];
+        CSS_FONTAWESOME = /"([\S]*font-awesome[\S]*)"/.exec(head)[1];
+        JS_MATHJAX = /"([\S]*MathJax\.js[\S]*)"/.exec(head)[1];
         setupProgressbar();
         setupControls();
         setupHelp();
