@@ -210,6 +210,38 @@ describe("Translator", function() {
         });
     });
 
+    it("test for sanitizeEscape", function(done) {
+        var inputFrame = "The bananas now cost \\$0.49 \\[\\[ old price \\$0.75  \\]\\].",
+            expOut = "The bananas now cost %{DOLLAR}0.49 %{SQR_LEFT_BR}%{SQR_LEFT_BR} old price %{DOLLAR}0.75  " +
+                "%{SQR_RIGHT_BR}%{SQR_RIGHT_BR}.";
+        async.waterfall([
+            function(callback) {
+                translator.sanitizeEscape({frames:[{content:inputFrame}]}, callback)
+            }
+        ], function(err, res) {
+            if(err == null) {
+                assert.deepEqual(res.frames[0].content, expOut);
+                done();
+            }
+        });
+    });
+
+    it("test for unsanitizeEscape", function(done) {
+        var inputFrame = "The bananas now cost %{DOLLAR}0.49 %{SQR_LEFT_BR}%{SQR_LEFT_BR} old price %{DOLLAR}0.75  " +
+                "%{SQR_RIGHT_BR}%{SQR_RIGHT_BR}.",
+            expOut = "The bananas now cost $0.49 [[ old price $0.75  ]].";
+        async.waterfall([
+            function(callback) {
+                translator.unsanitizeEscape({frames:[{content:inputFrame}]}, callback)
+            }
+        ], function(err, res) {
+            if(err == null) {
+                assert.deepEqual(res.frames[0].content, expOut);
+                done();
+            }
+        });
+    });
+
     it("test for translate", function(done) {
         async.waterfall([
             function(callback) {
