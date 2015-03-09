@@ -5,8 +5,8 @@ This module provides CLI for making slides. There is GUI app is located here
 [https://github.com/kintesh/slides-app] (https://github.com/kintesh/slides-app)
 
 
+
 # Usage
--------
 
 Default output for offline presentation:
 
@@ -17,14 +17,18 @@ Single file output for online presentation (requires internet connection when pr
     $ slides -o /path/to/source
 
 
+
 # Writing slides
-----------------
 
 Slides uses markdown at its core to render HTML with few additional formatting.
 
 Additional formatting:
 
     -> TEXT <-       to align text center of the slide.
+
+### Escape tags
+When writing slides, use `\` to escape special tags such as `$`, `[[` and `]]`. i.e. `\$` becomes $, `\[[`
+becomes `[[` and so on...
 
 
 ### Properties
@@ -69,8 +73,23 @@ Besides standard css styles, slides provides following custom properties:
     animation       | !(not implemented yet)!
 
 
+### Writing maths
+Slides supports rendering math equations both inline and block. Inline maths should be written between `$` and `$` tags.
+Block maths should be written between `$$` and `$$` tags.
+
+    ====
+    [[background-color:aquamarine; color:black]]
+    # ->Mass–energy equivalence<-
+
+    The equivalence of energy $E$ and mass $m$ is reliant on the speed of light $c$ and is described by the famous equation:
+
+    $$ E = mc^2 $$
+
+    ====
+
+
+
 # Presenting slides
--------------------
 
 When presenting use following keyboard shortcuts to interact with slides:
 
@@ -83,8 +102,8 @@ When presenting use following keyboard shortcuts to interact with slides:
     H, h                                        | Show help menu
 
 
+
 # Example
----------
 
     /**
      * Created by kintesh on 28/01/15.
