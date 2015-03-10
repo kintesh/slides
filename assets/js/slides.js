@@ -303,7 +303,6 @@ var Slides = (function($) {
             "<iframe id=\"view_next\" class=\"console-view_next\">Next Slide</iframe>"+
             "</div>"+
             "<div class=\"console-tools\">" +
-            "<div id=\"today\" class=\"today\">Wednesday, 18 February 2015</div>" +
             "<div class=\"durations\">" +
             "<div class=\"duration\"><span id=\"dur_slide\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Slide</span></div>"+
             "<div class=\"duration\"><span id=\"dur_total\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Total</span></div>" +
@@ -311,7 +310,8 @@ var Slides = (function($) {
             "</div>"+
             "</body></html>";
 
-        slidesConsoleWindow = window.open("","Slides Console","width=880,height=500");
+        slidesConsoleWindow = window.open("","Slides Console","width=880,height=500," +
+            "menubar=no,toolbar=no,location=no,personalbar=no,directories=no,status=no");
         slidesConsoleWindow.document.open();
         slidesConsoleWindow.document.write(consoleWindowHTML);
         slidesConsoleWindow.document.close();
@@ -328,7 +328,6 @@ var Slides = (function($) {
             });
 
             setInterval(function() {
-                $("#today", slidesConsoleWindow.document).html(new Date().toGMTString().slice(0, -4));
                 slideT = new Date(Date.now() - currSlideStartTime);
                 totalT = new Date(Date.now() - startTime);
                 $("#dur_slide", slidesConsoleWindow.document).html(

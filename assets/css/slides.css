@@ -44,6 +44,12 @@ body, .slide {
     padding: 10px;
     position: absolute;
     z-index: 150;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
@@ -209,6 +215,12 @@ img {
     top: 0px;
     opacity: 0.96;
     line-height: 90vh;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 .console-top_controls {
@@ -219,6 +231,11 @@ img {
     text-align: center;
     width: 10vh;
     top:0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .console-top_controls .btn {
@@ -250,6 +267,12 @@ img {
 .console-views, .console-tools {
     margin-left: 11vh;
     margin-top: 1vh;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 
@@ -266,13 +289,6 @@ img {
     width: 45vw;
     height: 55vh;
     margin-left: 1vh;
-}
-
-.console-tools .today {
-    font-size: 3vh;
-    font-weight: bold;
-    margin-bottom: 3vh;
-    margin-top: 3vh;
 }
 
 .console-tools .duration {
@@ -298,6 +314,12 @@ img {
     width: 100%;
     height: 100%;
     display: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
 }
 
 .sHelp .btn_close {
