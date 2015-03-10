@@ -27,8 +27,12 @@ Additional formatting:
     -> TEXT <-       to align text center of the slide.
 
 ### Escape tags
-When writing slides, use `\` to escape special tags such as `$`, `[[` and `]]`. i.e. `\$` becomes $, `\[[`
+When writing slides, use `\` to escape special tags such as `$`, `[[`, `]]`, `-`, `>`, `*` and `#`. i.e. `\$` becomes $, `\[[`
 becomes `[[` and so on...
+
+
+### Comments
+Comments can be written between `/*` and `*/` tags. The comments will not be included in the produced slides.
 
 
 ### Properties
@@ -116,7 +120,7 @@ When presenting use following keyboard shortcuts to interact with slides:
     date: 28/01/2015
 
 
-    // slide 1
+    /* slide 1 */
     ====
     [[background-color:aquamarine; color:black]]
     # ->Headers<-
@@ -135,7 +139,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
     ====
 
-    // slide 2
+    /* slide 2 */
     ====
     [[background-color:cadetblue; color:black]]
     # ->Text<-
@@ -158,7 +162,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
     ====
 
-    // slide 3
+    /* slide 3 */
     ====
     [[background-color:indianred; color:black]]
     # ->Lists<-
@@ -180,7 +184,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
     ====
 
-    // slide 4
+    /* slide 4 */
     ====
     [[background-color:indianred; color:black]]
     # ->Lists (2)<-
@@ -214,7 +218,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
     ====
 
-    // slide 5
+    /* slide 5 */
     ====
     # ->Tables<-
 
@@ -243,7 +247,7 @@ When presenting use following keyboard shortcuts to interact with slides:
     |         | not easy being.
     ====
 
-    // slide 6
+    /* slide 6 */
     ====
     # ->Maths<-
 
