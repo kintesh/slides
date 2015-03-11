@@ -71,10 +71,10 @@ Similar to slides, properties of its content can also be set and/or overridden. 
 
 Besides standard css styles, slides provides following custom properties:
 
-    property        | value
-    -------------------------------------
-    visibility      | reveal
-    animation       | !(not implemented yet)!
+    property     | value
+    ---------------------------------------
+    reveal       | true
+    animation    | !(not implemented yet)!
 
 
 ### Writing maths
@@ -128,13 +128,13 @@ When presenting use following keyboard shortcuts to interact with slides:
     # H1 header
     [[color:red]]
     ## H2 header
-    [[visibility:reveal; color:red]]
+    [[reveal:true; color:red]]
     ### H3 header
-    [[visibility:reveal; color:coral]]
+    [[reveal:true; color:coral]]
     #### H4 header
-    [[visibility:reveal]]
+    [[reveal:true]]
     ##### H5 header
-    [[visibility:reveal]]
+    [[reveal:true]]
     ###### H6 header
 
     ====
@@ -169,13 +169,13 @@ When presenting use following keyboard shortcuts to interact with slides:
 
 
     Itemized lists look like:
-    [[visibility:reveal]]
+    [[reveal:true]]
       * this one
       * that one
       * the other one
 
     Here's a numbered list:
-    [[visibility:reveal]]
+    [[reveal:true]]
      1. first item
      2. second item
      3. third item
@@ -191,7 +191,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
 
     Now a nested list:
-    [[visibility:reveal]]
+    [[reveal:true]]
      1. First, get these ingredients:
 
           * carrots
@@ -265,7 +265,7 @@ When presenting use following keyboard shortcuts to interact with slides:
     which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
 
 
-    [[visibility:reveal]]
+    [[reveal:true]]
       * $ E = mc^2 $
       * $ \cos (2\theta) = \cos^2 \theta - \sin^2 \theta $
       * $ c = \pm\sqrt{a^2 + b^2} $

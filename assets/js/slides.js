@@ -41,10 +41,21 @@ var Slides = (function($) {
             cList.each(function(ce) {
                 var nextElem = $(cList[ce]).next(),
                     nextElemChildren = nextElem.find("li"),
-                    props = JSON.parse(cList[ce].innerHTML);
-                if (props.hasOwnProperty("visibility")) {
-                    props.visibility = "";
-                    processCElemReveal(nextElem, nextElemChildren, props);
+                    p = JSON.parse(cList[ce].innerHTML),
+                    props = {css:{}};
+                Object.getOwnPropertyNames(p).forEach(function(prop) {
+                    if(prop !== "reveal" && prop !== "anim") {
+                        props.css[prop] = p[prop];
+                    } else {
+                        props[prop] = p[prop];
+                    }
+                });
+                if (props.hasOwnProperty("reveal")) {
+                    if(props.reveal) {
+                        processCElemReveal(nextElem, nextElemChildren, props);
+                    } else {
+                        processCElem(nextElem, nextElemChildren, props);
+                    }
                 } else {
                     processCElem(nextElem, nextElemChildren, props);
                 }
@@ -145,23 +156,23 @@ var Slides = (function($) {
     }
 
     function revealElem(cElem) {
-        if(cElem.props.hasOwnProperty("visibility")) {
+        if(cElem.props.hasOwnProperty("reveal")) {
             $(cElem.elem).removeClass("hide_elem")
                 .addClass("reveal_elem")
-                .css(cElem.props);
+                .css(cElem.props.css);
         } else {
-            $(cElem.elem).css(cElem.props);
+            $(cElem.elem).css(cElem.props.css);
         }
     }
 
     function hideElem(cElem) {
-        if(cElem.props.hasOwnProperty("visibility")) {
+        if(cElem.props.hasOwnProperty("reveal")) {
             $(cElem.elem).removeClass("reveal_elem")
                 .addClass("hide_elem")
-                .css(cElem.props);
+                .css(cElem.props.css);
         } else {
             var nProps = {};
-            $.each(cElem.props, function(prop) {
+            $.each(cElem.props.css, function(prop) {
                 nProps[prop] = "";
             });
             $(cElem.elem).css(nProps);
