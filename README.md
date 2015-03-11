@@ -71,10 +71,10 @@ Similar to slides, properties of its content can also be set and/or overridden. 
 
 Besides standard css styles, slides provides following custom properties:
 
-    property     | value
+    property : value
     ---------------------------------------
-    reveal       | true
-    animation    | !(not implemented yet)!
+    reveal   : true | false
+    anim     : dropDown | slideInLeft
 
 
 ### Writing maths
