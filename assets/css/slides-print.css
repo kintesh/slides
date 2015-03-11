@@ -76,21 +76,22 @@ body, .slide {
 
 .title_title {
     text-align: center;
-    margin-top: 30%;
-    margin-bottom: 10%;
-    line-height:0;
+    font-size: 1.6vh;
 }
 
 .title_subTitle {
     text-align: center;
+    font-size: 1.6vh;
 }
 
 .title_author {
     text-align: center;
+    font-size: 1.6vh;
 }
 
 .title_date {
     text-align: center;
+    font-size: 1.6vh;
 }
 
 hr {
