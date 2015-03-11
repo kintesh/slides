@@ -19,7 +19,8 @@ describe("Slides", function() {
             offline = "<!DOCTYPE html>\n<html>\n<head>\n<title>Slides</title>\n<meta charset=\"UTF-8\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/fonts.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides.css\">\n" +
-                "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides-print.css\" media=\"print\" />\n" +
+                "<link rel=\"stylesheet\" href=\"./slides_assets/css/slides-print.css\" media=\"print\"/>\n" +
+                "<link rel=\"stylesheet\" href=\"./slides_assets/css/style.css\"/>\n" +
                 "<link rel=\"stylesheet\" href=\"./slides_assets/css/font-awesome.css\">\n" +
                 "<script src=\"./slides_assets/js/jquery.js\"></script>\n" +
                 "<script src=\"./slides_assets/js/slides.js\"></script>\n" +
@@ -31,7 +32,8 @@ describe("Slides", function() {
             online = "<!DOCTYPE html>\n<html>\n<head>\n<title>Slides</title>\n<meta charset=\"UTF-8\">\n" +
                 "<link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700|Source+Code+Pro\">\n" +
                 "<link rel=\"stylesheet\" href=\"http://slides.kinte.sh/slides_assets/css/slides.css\">\n" +
-                "<link rel=\"stylesheet\" href=\"http://slides.kinte.sh/slides_assets/css/slides-print.css\" media=\"print\" />\n" +
+                "<link rel=\"stylesheet\" href=\"http://slides.kinte.sh/slides_assets/css/slides-print.css\" media=\"print\"/>\n" +
+                "<link rel=\"stylesheet\" href=\"http://slides.kinte.sh/slides_assets/css/style.css\"/>\n" +
                 "<link rel=\"stylesheet\" href=\"http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css\">\n" +
                 "<script src=\"http://code.jquery.com/jquery-2.1.3.min.js\"></script>\n" +
                 "<script src=\"http://slides.kinte.sh/slides_assets/js/slides.js\"></script>\n" +

@@ -1,0 +1,65 @@
+/**
+ * Created by kintesh on 11/03/15.
+ */
+
+
+.slide {
+    background-color: #f0f0f0;
+    color: #444;
+}
+
+.title_title {
+    text-align: center;
+    font-size: 4vh;
+}
+
+.title_subTitle {
+    text-align: center;
+    font-size: 3vh;
+}
+
+.title_author {
+    text-align: center;
+    font-size: 2.6vh;
+}
+
+.title_date {
+    text-align: center;
+    font-size: 2.6vh;
+}
+
+hr {
+    border: 1px dashed coral;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #98bf21;
+}
+
+table td, table th {
+    font-size: 2.6vh;
+    border-right: 1px solid #98bf21;
+    padding: 3px 7px 2px 7px;
+}
+
+table th {
+    font-size: 2.7vh;
+    text-align: left;
+    background-color: #A7C942;
+    color: #ffffff;
+    border-bottom: 1px solid #98BF21;
+}
+
+table tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+img {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
