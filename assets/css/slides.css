@@ -125,24 +125,36 @@ body, .slide {
     opacity: 0;
 }
 
+.align_middle {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.middle_container {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 .title_title {
     text-align: center;
-    line-height: 50vh;
     font-size: 4vh;
 }
 
 .title_subTitle {
     text-align: center;
-
+    font-size: 3vh;
 }
 
 .title_author {
     text-align: center;
+    font-size: 2.6vh;
 }
 
 .title_date {
     text-align: center;
+    font-size: 2.6vh;
 }
 
 hr {

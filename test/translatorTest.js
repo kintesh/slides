@@ -158,9 +158,10 @@ describe("Translator", function() {
                 author: "Kintesh Patel",
                 date: "28/01/2015"
             },
-            expOut = "<div class=\"slide\">\n<div class=\"title_title\"><h1>Sample Slides</h1></div>" +
-                "<div class=\"title_subTitle\"><h3>Sample slides showing different features.</h3></div>" +
-                "<div class=\"title_author\">Kintesh Patel</div><div class=\"title_date\">28/01/2015</div>\n</div>\n";
+            expOut = "<div class=\"slide\">\n<div class=\"align_middle\"><divc class=\"middle_container\">\n<div " +
+                "class=\"title_title\"><h1>Sample Slides</h1></div><div class=\"title_subTitle\"><h3>Sample slides " +
+                "showing different features.</h3></div><div class=\"title_author\">Kintesh Patel</div><div " +
+                "class=\"title_date\">28/01/2015</div>\n</div></div>\n\n</div>\n";
         async.waterfall([
             function(callback) {
                 translator.makeTitleSlide({properties:input}, callback);
