@@ -163,6 +163,9 @@ var Slides = (function($) {
         } else {
             $(cElem.elem).css(cElem.props.css);
         }
+        if(cElem.props.hasOwnProperty("anim")) {
+            $(cElem.elem).addClass(cElem.props.anim);
+        }
     }
 
     function hideElem(cElem) {
@@ -176,6 +179,9 @@ var Slides = (function($) {
                 nProps[prop] = "";
             });
             $(cElem.elem).css(nProps);
+        }
+        if(cElem.props.hasOwnProperty("anim")) {
+            $(cElem.elem).removeClass(cElem.props.anim);
         }
     }
 

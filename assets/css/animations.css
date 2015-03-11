@@ -1,0 +1,107 @@
+/**
+ * Created by kintesh on 11/03/15.
+ */
+
+/* Slide Animations */
+.slide_previous {
+    transform: translate(-100vw,0vw);
+    display: block;
+    opacity: 1;
+}
+
+.slide_current {
+    transform: translate(0vw,0vw);
+    display: block;
+    opacity: 1;
+    z-index: 10;
+}
+
+.slide_next {
+    transform: translate(100vw,0vw);
+    display: block;
+    opacity: 1;
+}
+
+
+.dropDown {
+    animation: kf_dropDown 1s ease 0s 1 both;
+    transform-origin: 50% 50%;
+    -webkit-animation: kf_dropDown 1s ease 0s 1 both;
+    -webkit-transform-origin: 50% 50%;
+}
+@keyframes kf_dropDown {
+    0% {
+        opacity:0;
+        transform: translate(0px,-50vh);
+    }
+    60% {
+        opacity:1;
+        transform: translate(0px,30px);
+    }
+    80% {
+        transform: translate(0px,-10px);
+    }
+    100% {
+        opacity:1;
+        transform: translate(0px,0px);
+    }
+}
+@-webkit-keyframes kf_dropDown {
+    0% {
+        opacity:0;
+        transform: translate(0px,-50vh);
+    }
+    60% {
+        opacity:1;
+        transform: translate(0px,30px);
+    }
+    80% {
+        transform: translate(0px,-10px);
+    }
+    100% {
+        opacity:1;
+        transform: translate(0px,0px);
+    }
+}
+
+
+.slideInLeft {
+    animation: kf_slideInLeft 1s ease 0s 1 both;
+    transform-origin: 50% 50%;
+    -webkit-animation: kf_slideInLeft 1s ease 0s 1 both;
+    -webkit-transform-origin: 50% 50%;
+}
+@keyframes kf_slideInLeft {
+    0% {
+        opacity:0;
+        transform: translate(-50vw,0px);
+    }
+    60% {
+        opacity:1;
+        transform: translate(30px,0px);
+    }
+    80% {
+        transform: translate(-10px,0px);
+    }
+    100% {
+        opacity:1;
+        transform: translate(0px,0px);
+    }
+}
+@-webkit-keyframes kf_slideInLeft {
+    0% {
+        opacity:0;
+        -webkit-transform: translate(-100vw,0px);
+    }
+    60% {
+        opacity:1;
+        -webkit-transform: translate(30px,0px);
+    }
+    80% {
+        -webkit-transform: translate(-10px,0px);
+    }
+    100% {
+        opacity:1;
+        -webkit-transform: translate(0px,0px);
+    }
+}

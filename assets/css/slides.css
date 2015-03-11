@@ -103,22 +103,15 @@ body, .slide {
 }
 
 .slide_previous {
-    transform:  scale(1.2,1.2);
     display: block;
-    opacity: 0;
 }
 
 .slide_current {
-    transform: translate(0vw);
     display: block;
-    opacity: 1;
-    z-index: 10;
 }
 
 .slide_next {
-    transform:  scale(0.8,0.8);
     display: block;
-    opacity: 0;
 }
 
 .align_middle {
