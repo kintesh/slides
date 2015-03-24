@@ -76,22 +76,22 @@ body, .slide {
 
 .title_title {
     text-align: center;
-    font-size: 1.6vh;
+    font-size: 2vh !important;
 }
 
 .title_subTitle {
     text-align: center;
-    font-size: 1.6vh;
+    font-size: 1.5vh !important;
 }
 
 .title_author {
     text-align: center;
-    font-size: 1.6vh;
+    font-size: 1.2vh !important;
 }
 
 .title_date {
     text-align: center;
-    font-size: 1.6vh;
+    font-size: 1.2vh !important;
 }
 
 hr {
@@ -104,28 +104,28 @@ hr {
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #98bf21;
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: 1px solid #98bf21 !important;
 }
 
 table td, table th {
-    font-size: 1em;
-    border-right: 1px solid #98bf21;
-    padding: 3px 7px 2px 7px;
+    font-size: 1em !important;
+    border-right: 1px solid #98bf21 !important;
+    padding: 3px 7px 2px 7px !important;
 }
 
 table th {
-    font-size: 1.1em;
-    text-align: left;
-    background-color: #A7C942;
-    color: #ffffff;
-    border-bottom: 1px solid #98BF21;
+    font-size: 1.1em !important;
+    text-align: left !important;
+    background-color: #A7C942 !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #98BF21 !important;
 }
 
 table tr.alt td {
-    color: #000000;
-    background-color: #EAF2D3;
+    color: #000000 !important;
+    background-color: #EAF2D3 !important;
 }
 
 img {
