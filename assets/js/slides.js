@@ -9,7 +9,7 @@ var Slides = (function($) {
         ELEM: 2
     };
 
-    var CSS_SLIDES, CSS_FONTAWESOME, JS_MATHJAX;
+    var CSS_FONTS, CSS_SLIDES, CSS_STYLE, CSS_ANIMATIONS, CSS_FONTAWESOME, JS_MATHJAX;
 
     var list = [], curr = -1, slides, currSlide, sBar,
         rawSlides, currRawSlide = -1, slidesConsoleWindow, consoleCurrView, consoleNextView,
@@ -17,9 +17,12 @@ var Slides = (function($) {
 
     function init() {
         var head = $("head").html();
-        CSS_SLIDES = /"([\S]*slides\.css[\S]*)"/.exec(head)[1];
-        CSS_FONTAWESOME = /"([\S]*font-awesome[\S]*)"/.exec(head)[1];
-        JS_MATHJAX = /"([\S]*MathJax\.js[\S]*)"/.exec(head)[1];
+        CSS_FONTS = /"([\S]*fonts([\.-_]min)*\.css[\S]*)"/.exec(head)[1];
+        CSS_SLIDES = /"([\S]*slides([\.-_]min)*\.css[\S]*)"/.exec(head)[1];
+        CSS_STYLE = /"([\S]*style([\.-_]min)*\.css[\S]*)"/.exec(head)[1];
+        CSS_ANIMATIONS = /"([\S]*animations([\.-_]min)*\.css[\S]*)"/.exec(head)[1];
+        CSS_FONTAWESOME = /"([\S]*font-awesome([\.-_]min)*\.css[\S]*)"/.exec(head)[1];
+        JS_MATHJAX = /"([\S]*MathJax([\.-_]min)*\.js[\S]*)"/.exec(head)[1];
         setupProgressbar();
         setupControls();
         setupHelp();
@@ -379,7 +382,11 @@ var Slides = (function($) {
 
     function getIFrameSrcdoc(slide) {
         return "<!DOCTYPE html><html><head lang=\"en\"><meta charset=\"UTF-8\">" +
+            "<link rel=\"stylesheet\" href=" + CSS_FONTS + ">" +
             "<link rel=\"stylesheet\" href=" + CSS_SLIDES + ">" +
+            "<link rel=\"stylesheet\" href=" + CSS_STYLE + ">" +
+            "<link rel=\"stylesheet\" href=" + CSS_ANIMATIONS + ">" +
+            "<link rel=\"stylesheet\" href=" + CSS_FONTAWESOME + ">" +
             "<script type=\"text/javascript\" src="+ JS_MATHJAX +"></script></head>" +
             "<body>"+slide.outerHTML+"</body></html>";
     }
