@@ -6,6 +6,17 @@ This module provides CLI for making slides. A GUI app can be found here
 
 
 
+#Installation
+
+This tool requires Node.js. Download and install latest version of Node.js for your platform from
+[nodejs.org] (https://nodejs.org/download/)
+
+Run the following command to install latest version of slides.
+
+    $ npm install https://github.com/kintesh/slides/tarball/master
+
+
+
 # Usage
 
 Default output for offline presentation:
