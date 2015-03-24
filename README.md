@@ -13,8 +13,9 @@ This tool requires Node.js. Download and install latest version of Node.js for y
 
 Run the following command to install latest version of slides.
 
-    $ npm install https://github.com/kintesh/slides/tarball/master
+    $ npm install -g https://github.com/kintesh/slides/tarball/master
 
+Note: You may need to run this command with sudo (i.e. `$ sudo npm install -g https://github.com/kintesh/slides/tarball/master`).
 
 
 # Usage
