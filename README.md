@@ -1,4 +1,4 @@
-# slides [![Build Status](https://magnum.travis-ci.com/kintesh/slides.svg?token=DVy8k5QfBqWJZbznAXvF&branch=master)](https://magnum.travis-ci.com/kintesh/slides)
+# slides [![Build Status](https://travis-ci.org/kintesh/slides.svg?branch=master)](https://travis-ci.org/kintesh/slides)
 A tool to make and present HTML5 slides. Supports mathematical equations using MathJax.
 
 This module provides CLI for making slides. A GUI app can be found here
