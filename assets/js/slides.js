@@ -395,7 +395,7 @@ var Slides = (function($) {
     /**
      * Events
      */
-    $( document ).keypress(function( event ) {
+    $( document ).keydown(function( event ) {
         //console.log("keyCode: " + event.keyCode + " | which:" + event.which + " | key:" + event.key);
         // Left:37  Up:38  Right:39  Down:40  13:Return
         if(event.keyCode == 39 || event.keyCode == 40 || event.keyCode == 46) {
