@@ -23,9 +23,10 @@ function main(argv) {
         async = require("async");
 
     program
-        .version("0.0.0")
+        .version("1.0.0")
         .usage("[options] [source file]")
-        .option("-o, --online", "Single file output, requires internet connection for presentation.")
+        .option("-o, --online", "Single file output for online presentation " +
+                "(requires internet connection during presentation)")
         .option("-v, --verbose", "Print verbose output on console")
         .parse(process.argv);
 
