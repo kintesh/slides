@@ -38,6 +38,10 @@
     url('../fonts/Open_Sans-Italic.ttf') format('ttf');
 }
 
+* {
+    transition: none !important;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-size: 10pt;
@@ -66,12 +70,13 @@ body, .slide {
     margin-top: 5px;
     padding: 0 20px;
     position: relative;
-    display: block !important;
+    display: inline-block !important;
     opacity: 1 !important;
     transform: none !important;
     z-index: 0 !important;
     height: 480px !important;
-    page-break-after: avoid;
+    page-break-after: avoid !important;
+    width:680px;
 }
 
 .title_title {
