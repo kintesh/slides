@@ -174,7 +174,7 @@ body, .slide {
     height: 100vh;
     color: rgb(240, 240, 240);
     text-align: center;
-    width: 10vh;
+    width: 6vw;
     top:0;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -210,8 +210,9 @@ body, .slide {
 }
 
 .console-views, .console-tools {
-    margin-left: 11vh;
+    margin-left: 7vw;
     margin-top: 1vh;
+    width: 93vw;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -233,21 +234,21 @@ body, .slide {
 .console-view_next {
     width: 45vw;
     height: 55vh;
-    margin-left: 1vh;
+    margin-left: 1vw;
 }
 
 .console-tools .duration {
     float: left;
-    width: 15vw;
+    width: 25vw;
     text-align: center;
 }
 
 .duration-lbl {
-    font-size: 2vh;
+    font-size: 2vw;
 }
 
 .duration-time {
-    font-size: 5vh;
+    font-size: 5vw;
 }
 
 
