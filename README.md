@@ -18,7 +18,8 @@ Run the following command to install latest version of slides.
 Note: You may need to run this command with sudo (i.e. `$ sudo npm install -g https://github.com/kintesh/slides/tarball/master`).
 
 
-# Usage
+
+#Usage
 
 Default output for offline presentation:
 
@@ -30,25 +31,19 @@ Single file output for online presentation (requires internet connection when pr
 
 
 
-# Writing slides
+#Writing slides
 
 Slides uses markdown at its core to render HTML with few additional formatting.
 
-Additional formatting:
 
-    -> TEXT <-       to align text center of the slide.
+##Comments
 
-### Escape tags
-When writing slides, use `\` to escape special tags such as `$`, `[[`, `]]`, `-`, `>`, `*` and `#`. i.e. `\$` becomes $, `\[[`
-becomes `[[` and so on...
+Comments are written between \texttt{/*} and \texttt{*/.} tags. The comments will be removed when translating the slides and will not be included in the produced slides.
 
 
-### Comments
-Comments can be written between `/*` and `*/` tags. The comments will not be included in the produced slides.
+##Properties
 
-
-### Properties
-Properties are very important and are used for setting presentation properties, title slide and meta information.
+The properties are used for generating title slide and setting up meta tags of the output HTML file. Therefore it is recommended to specify all properties when writing slides. The properties must be defined at top of a document and fore the first slide.
 The following properties are available:
 
     title:      sets slides title
@@ -57,29 +52,127 @@ The following properties are available:
     date:       date
 
 
-### Title slide
+#Title slide
 
-The title slides is automatically generated when properties are set.
+The title slides is automatically generated based on the specified properties.
 
 
-### Slide
-Each slide must begin with `====` and also end with `====`. Any content between these tags will be put under one slide.
-Multiple slides can be defined in one document.
+#Slide
+Each slide must begin with \texttt{====} (four equals symbols) and also end with \texttt{====} (four equals symbols). Any content between these tags will be put under one slide.
 
-The default css of any slide can be overridden. To do this, place any css between `[[` and `]]` tags. The properties
-tag must go immediately after begin slide tag `====`. For example:
+    ====
+    
+    slide contents goes here...
+    
+    ====
+
+
+##Styling slides
+The default css style of any slide can be overridden. To do this, place any css styles between \texttt{[[} and \texttt{]]} tags. The properties tag must go immediately after the begin slide tag \texttt{====}. For example:
 
     ====
     [[background-color:aquamarine; color:black]]
-    # ->Slide<-
 
     slide contents.....
 
     ====
 
-### Content properties
-Similar to slides, properties of its content can also be set and/or overridden. Again the properties must go between
-`[[` and `]]` tags. However unlike the slides, the content property must go before before the content.
+
+##Paragraphs
+
+Writing paragraphs does not require any syntax. Paragraphs are written simply writing one or more consecutive lines of text.
+
+    ====
+        
+    Writing paragraphs does not require any syntax. Paragraphs are 
+    written simply writing one or more consecutive lines of text.
+
+    This is a 2nd paragraph.
+    ====
+
+
+##Headers
+HTML headers 1 to 6 are written using hash characters at the start of the line. The number of hash characters represents the header level.
+
+    ====
+    
+    # H1 header
+    ## H2 header
+    ### H3 header
+    #### H4 header
+    ##### H5 header
+    ###### H6 header
+
+    ====
+
+
+##Text formatting and alignment
+
+The following text formatting are provided using various tags.
+
+  * \*Italic text\* results in *Italic text*
+  * \*\*bold text\*\* results in **bold text**
+  * \`monospace text\`} results in `monospace text`
+  * -> align center  <- results the text being aligned to the center of a slide
+
+
+##Escape tags
+
+When writing slides, use \texttt{\\} followed a tag to escape it. For example \texttt{\\`foo\\`, \\*bar\\*} results in \texttt{`foo`*bar*}
+
+
+##Blockquotes
+
+Blockquotes are written using right angle character \texttt{>}.
+
+    ====
+    > Block quotes are
+    > written like so.
+    >
+    > They can span multiple paragraphs,
+    > if you like.
+    ====
+
+
+##Lists
+
+Lists are written using asterisks or numbers. Note that (not considering the asterisk) the actual text content starts at 4-columns in.
+
+    ====
+    Itemized lists look like:
+    [[reveal:true]]
+      * this one
+      * that one
+      * the other one
+
+    Here's a numbered list:
+    [[reveal:true]]
+     1. first item
+     2. second item
+     3. third item
+    ====
+
+
+##Writing maths
+
+Slides supports rendering math equations both inline and block. Inline maths should be written between \texttt{\$} and \texttt{\$} tags. Block maths should be written between  \texttt{\$\$} and \texttt{\$\$} tags.
+
+    ====
+    [[background-color:aquamarine; color:black]]
+    # ->Mass–energy equivalence<-
+
+    The equivalence of energy $E$ and mass $m$ is reliant on the speed 
+    of light $c$ and is described by the famous equation:
+
+    $$ E = mc^2 $$
+
+    ====
+
+
+##Content properties
+
+Similar to styling slides, properties of its content can also be set and/or overridden. Again the properties must go between \texttt{[[} and \texttt{]]} tags. Unlike styling slides, the content property must go before the content.
+
 
 Besides standard css styles, slides provides following custom properties:
 
@@ -89,23 +182,72 @@ Besides standard css styles, slides provides following custom properties:
     anim     : dropDown | slideInLeft
 
 
-### Writing maths
-Slides supports rendering math equations both inline and block. Inline maths should be written between `$` and `$` tags.
-Block maths should be written between `$$` and `$$` tags.
+##Code Blocks
+
+Pre-formatted code blocks are written by indenting every line of the block by at least 4 spaces or 1 tab.
+
+     ====
+     Soup algorithm:
+         find wooden spoon
+         uncover pot
+         stir
+         cover pot
+         balance wooden spoon precariously on pot handle
+         wait 10 minutes
+         goto first step (or shut off burner when done)
+    Do not bump wooden spoon or it will fall.
+    ====
+
+
+##Links
+
+Links are written like so:
 
     ====
-    [[background-color:aquamarine; color:black]]
-    # ->Mass–energy equivalence<-
+    This project can be found on [Github](https://github.com/kintesh/slides).
+    
+    [Kintesh Patel](https://kinte.sh).
+    ====
 
-    The equivalence of energy $E$ and mass $m$ is reliant on the speed of light $c$ and is described by the famous equation:
 
-    $$ E = mc^2 $$
+##Images
 
+Images are inserted like so:
+
+    ====
+    ![Alt text](/path/to/img.jpg)
+    ![Alt text](/path/to/img.jpg "Optional title")
+    ====
+
+
+##Tables
+
+Tables are written by formatting it as shown below.
+
+    ====
+    # Table
+
+    |size | material   |  color
+    |---- | ---------- | -----------
+    |9    |leather     |  brown
+    |10   |hemp canvas |  natural
+    |11   |glass       |  transparent
+    
+    # Advanced table
+    |keyword  | text
+    |-------- | -----------------------
+    |red      | Sunsets, apples, and
+    |         | other red or reddish
+    |         | things.
+    |green    | Leaves, grass, frogs
+    |         | and other things it's
+    |         | not easy being.
+    
     ====
 
 
 
-# Presenting slides
+#Presenting slides
 
 When presenting use following keyboard shortcuts to interact with slides:
 
@@ -119,7 +261,7 @@ When presenting use following keyboard shortcuts to interact with slides:
 
 
 
-# Example
+#Example
 
     /**
      * Created by kintesh on 28/01/15.
@@ -286,8 +428,9 @@ When presenting use following keyboard shortcuts to interact with slides:
     ====
 
 
-# Licence
----------
+
+#Licence
+
 Copyright 2015 Kintesh Patel
 
 Licensed under the Apache License, Version 2.0 (the "License");
