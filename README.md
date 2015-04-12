@@ -52,12 +52,12 @@ The following properties are available:
     date:       date
 
 
-#Title slide
+##Title slide
 
 The title slides is automatically generated based on the specified properties.
 
 
-#Slide
+##Slide
 Each slide must begin with \texttt{====} (four equals symbols) and also end with \texttt{====} (four equals symbols). Any content between these tags will be put under one slide.
 
     ====
