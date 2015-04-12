@@ -4,7 +4,7 @@
   "description": "A tool to make and present HTML5 slides",
   "main": "index.js",
   "preferGlobal": "true",
-  "private": true,
+  "private": false,
   "bin": {
     "slides": "bin/slides"
   },
@@ -35,10 +35,12 @@
     "slides",
     "presentation",
     "web",
-    "html"
+    "html",
+    "html5",
+    "mathjax"
   ],
   "author": "Kintesh <i.am@kinte.sh> (http://kinte.sh/)",
-  "license": "ISC",
+  "license": "Apache License, Version 2.0",
   "bugs": {
     "url": "https://github.com/kintesh/slides/issues"
   },
