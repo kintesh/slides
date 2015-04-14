@@ -223,11 +223,16 @@ var Slides = (function($) {
 
     function setupControls() {
         $("<div id=\"sControls\" class=\"sControls\">\n" +
-        "<div id=\"cBtn_Previous\" class=\"cBtn\"><i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
-        "<div id=\"cBtn_Next\" class=\"cBtn\"><i class=\"fa fa-forward\"></i><span>Next</span></div>" +
-        "<div id=\"cBtn_Screen\" class=\"cBtn\"><i class=\"fa fa-expand\"></i><span>Full Screen</span></div>" +
-        "<div id=\"cBtn_Console\" class=\"cBtn\"><i class=\"fa fa-th-large\"></i><span>Console</span></div>" +
-        "<div id=\"cBtn_Help\" class=\"cBtn\"><i class=\"fa fa-life-ring\"></i><span>Help</span></div>" +
+        "<div id=\"cBtn_Previous\" class=\"cBtn\">" +
+        "<i class=\"fa fa-backward\"></i><span>Previous</span></div>" +
+        "<div id=\"cBtn_Next\" class=\"cBtn\">" +
+        "<i class=\"fa fa-forward\"></i><span>Next</span></div>" +
+        "<div id=\"cBtn_Screen\" class=\"cBtn\">" +
+        "<i class=\"fa fa-expand\"></i><span>Full Screen</span></div>" +
+        "<div id=\"cBtn_Console\" class=\"cBtn\">" +
+        "<i class=\"fa fa-th-large\"></i><span>Console</span></div>" +
+        "<div id=\"cBtn_Help\" class=\"cBtn\">" +
+        "<i class=\"fa fa-life-ring\"></i><span>Help</span></div>" +
         "</div>").appendTo("body").animate({opacity:"0"}, 2000);
 
         $("#cBtn_Previous" ).click(function() {
@@ -257,11 +262,14 @@ var Slides = (function($) {
         "<h2>Slides help</h2>Use keyboard to navigate.</div>" +
         "<div class=\"help_table\">" +
         "<div class=\"help_table_row\"><div class=\"help_table_cell\">Next </div>" +
-        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-right\"></i>&nbsp;&nbsp;&nbsp;<i class=\"fa fa-arrow-down\"></i></div></div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-right\"></i>&nbsp;&nbsp;&nbsp;" +
+        "<i class=\"fa fa-arrow-down\"></i></div></div>" +
         "<div class=\"help_table_row\"><div class=\"help_table_cell\">Previous </div>" +
-        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-left\"></i>&nbsp;&nbsp;&nbsp;<i class=\"fa fa-arrow-up\"></i></div></div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-arrow-left\"></i>&nbsp;&nbsp;&nbsp;" +
+        "<i class=\"fa fa-arrow-up\"></i></div></div>" +
         "<div class=\"help_table_row\"><div class=\"help_table_cell\">Full Screen </div>" +
-        "<div class=\"help_table_cell\"><i class=\"fa fa-level-down\" style=\"transform: rotate(90deg);\"></i>&nbsp;&nbsp;&nbsp;F</div></div>" +
+        "<div class=\"help_table_cell\"><i class=\"fa fa-level-down\" " +
+        "style=\"transform: rotate(90deg);\"></i>&nbsp;&nbsp;&nbsp;F</div></div>" +
         "<div class=\"help_table_row\"><div class=\"help_table_cell\">Console </div>" +
         "<div class=\"help_table_cell\">C</div></div>" +
         "<div class=\"help_table_row\"><div class=\"help_table_cell\">Help </div>" +
@@ -324,8 +332,10 @@ var Slides = (function($) {
             "</div>"+
             "<div class=\"console-tools\">" +
             "<div class=\"durations\">" +
-            "<div class=\"duration\"><span id=\"dur_slide\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Slide</span></div>"+
-            "<div class=\"duration\"><span id=\"dur_total\" class=\"duration-time\">--:--:--</span><br><span class=\"duration-lbl\">Total</span></div>" +
+            "<div class=\"duration\"><span id=\"dur_slide\" class=\"duration-time\">--:--:--</span>" +
+            "<br><span class=\"duration-lbl\">Slide</span></div>"+
+            "<div class=\"duration\"><span id=\"dur_total\" class=\"duration-time\">--:--:--</span>" +
+            "<br><span class=\"duration-lbl\">Total</span></div>" +
             "</div>"+
             "</div>"+
             "</body></html>";
