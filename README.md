@@ -38,7 +38,7 @@ Slides uses markdown at its core to render HTML with few additional formatting.
 
 ##Comments
 
-Comments are written between `/*` and `*/.` tags. The comments will be removed when translating the slides and will not be included in the produced slides.
+Comments are written between `/*` and `*/` tags. The comments will be removed when translating the slides and will not be included in the produced slides.
 
 
 ##Properties
@@ -112,13 +112,13 @@ The following text formatting are provided using various tags.
 
   * \*Italic text\* results in *Italic text*
   * \*\*bold text\*\* results in **bold text**
-  * \`monospace text\`` results in `monospace text`
+  * \`monospace text\` results in `monospace text`
   * -> align center  <- results the text being aligned to the center of a slide
 
 
 ##Escape tags
 
-When writing slides, use `\\` followed a tag to escape it. For example `\\`foo\\`, \\*bar\\*` results in ``foo`*bar*`
+When writing slides, use `\\` followed a tag to escape it. For example \\\`foo\\\`, \\\*bar\\\* results in \`foo\`, \*bar\*
 
 
 ##Blockquotes
@@ -158,7 +158,7 @@ Lists are written using asterisks or numbers. Note that (not considering the ast
 Slides supports rendering math equations both inline and block. Inline maths should be written between `\$` and `\$` tags. Block maths should be written between  `\$\$` and `\$\$` tags.
 
     ====
-    [[background-color:aquamarine; color:black]]
+    [[background-color:cadetblue; color:black]]
     # ->Mass–energy equivalence<-
 
     The equivalence of energy $E$ and mass $m$ is reliant on the speed 
@@ -251,13 +251,13 @@ Tables are written by formatting it as shown below.
 
 When presenting use following keyboard shortcuts to interact with slides:
 
-    key                                         | result
-    ------------------------------------------------------------------------
-    Arrow Left, Arrow Down, Left Angle Bracket  | Next slide
-    Arrow Right, Arrow UP, Right Angle Bracket  | Previous slide
-    F, f, Return/Enter                          | Toggle full screen
-    C, c                                        | Open presentation console
-    H, h                                        | Show help menu
+    key                     | result
+    ------------------------------------------------------
+    Arrow Left, Arrow Down  | Next slide
+    Arrow Right, Arrow UP   | Previous slide
+    F, f, Return/Enter      | Toggle full screen
+    C, c                    | Open presentation console
+    H, h                    | Show help menu
 
 
 
