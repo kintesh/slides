@@ -38,7 +38,7 @@ Slides uses markdown at its core to render HTML with few additional formatting.
 
 ##Comments
 
-Comments are written between \texttt{/*} and \texttt{*/.} tags. The comments will be removed when translating the slides and will not be included in the produced slides.
+Comments are written between `/*` and `*/.` tags. The comments will be removed when translating the slides and will not be included in the produced slides.
 
 
 ##Properties
@@ -58,7 +58,7 @@ The title slides is automatically generated based on the specified properties.
 
 
 ##Slide
-Each slide must begin with \texttt{====} (four equals symbols) and also end with \texttt{====} (four equals symbols). Any content between these tags will be put under one slide.
+Each slide must begin with `====` (four equals symbols) and also end with `====` (four equals symbols). Any content between these tags will be put under one slide.
 
     ====
     
@@ -68,7 +68,7 @@ Each slide must begin with \texttt{====} (four equals symbols) and also end with
 
 
 ##Styling slides
-The default css style of any slide can be overridden. To do this, place any css styles between \texttt{[[} and \texttt{]]} tags. The properties tag must go immediately after the begin slide tag \texttt{====}. For example:
+The default css style of any slide can be overridden. To do this, place any css styles between `[[` and `]]` tags. The properties tag must go immediately after the begin slide tag `====`. For example:
 
     ====
     [[background-color:aquamarine; color:black]]
@@ -112,18 +112,18 @@ The following text formatting are provided using various tags.
 
   * \*Italic text\* results in *Italic text*
   * \*\*bold text\*\* results in **bold text**
-  * \`monospace text\`} results in `monospace text`
+  * \`monospace text\`` results in `monospace text`
   * -> align center  <- results the text being aligned to the center of a slide
 
 
 ##Escape tags
 
-When writing slides, use \texttt{\\} followed a tag to escape it. For example \texttt{\\`foo\\`, \\*bar\\*} results in \texttt{`foo`*bar*}
+When writing slides, use `\\` followed a tag to escape it. For example `\\`foo\\`, \\*bar\\*` results in ``foo`*bar*`
 
 
 ##Blockquotes
 
-Blockquotes are written using right angle character \texttt{>}.
+Blockquotes are written using right angle character `>`.
 
     ====
     > Block quotes are
@@ -155,7 +155,7 @@ Lists are written using asterisks or numbers. Note that (not considering the ast
 
 ##Writing maths
 
-Slides supports rendering math equations both inline and block. Inline maths should be written between \texttt{\$} and \texttt{\$} tags. Block maths should be written between  \texttt{\$\$} and \texttt{\$\$} tags.
+Slides supports rendering math equations both inline and block. Inline maths should be written between `\$` and `\$` tags. Block maths should be written between  `\$\$` and `\$\$` tags.
 
     ====
     [[background-color:aquamarine; color:black]]
@@ -171,7 +171,7 @@ Slides supports rendering math equations both inline and block. Inline maths sho
 
 ##Content properties
 
-Similar to styling slides, properties of its content can also be set and/or overridden. Again the properties must go between \texttt{[[} and \texttt{]]} tags. Unlike styling slides, the content property must go before the content.
+Similar to styling slides, properties of its content can also be set and/or overridden. Again the properties must go between `[[` and `]]` tags. Unlike styling slides, the content property must go before the content.
 
 
 Besides standard css styles, slides provides following custom properties:
