@@ -32,6 +32,19 @@ hr {
     border: 1px dashed coral;
 }
 
+a, a:link, a:visited, a:active {
+    color: #000000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a i {
+    font-size: 2vh !important;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
