@@ -233,7 +233,7 @@ var Slides = (function($) {
         "<i class=\"fa fa-th-large\"></i><span>Console</span></div>" +
         "<div id=\"cBtn_Help\" class=\"cBtn\">" +
         "<i class=\"fa fa-life-ring\"></i><span>Help</span></div>" +
-        "</div>").appendTo("body").animate({opacity:"0"}, 2000);
+        "</div>").appendTo("body").animate({opacity:"0"}, 3000);
 
         $("#cBtn_Previous" ).click(function() {
             previous();
@@ -463,6 +463,11 @@ var Slides = (function($) {
 
 
 $( document ).ready(function() {
+    $("<div id=\"block\" class=\"block\"><i class=\"fa fa-cog fa-spin\"></i> Loading...</div>")
+        .appendTo("body");
     Slides.init();
+    setTimeout(function refresh() {
+        $("#block").fadeOut("slow");
+    }, 1000);
 });
 
