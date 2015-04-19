@@ -263,100 +263,89 @@ When presenting use following keyboard shortcuts to interact with slides:
 
 #Example
 
-    /**
+    /*
      * Created by kintesh on 28/01/15.
      */
-
-
+    
     title: Sample Slides
     sub_title: Sample slides showing various features.
-    author: Kintesh Patel
+    author: Kintesh
     date: 28/01/2015
-
-
+    
     /* slide 1 */
     ====
-    [[background-color:aquamarine; color:black]]
     # ->Headers<-
-
+    
     # H1 header
     [[color:red]]
     ## H2 header
-    [[reveal:true; color:red]]
+    [[reveal:true; color:red; anim:dropDown]]
     ### H3 header
-    [[reveal:true; color:coral]]
+    [[reveal:true; color:coral; anim:slideInLeft]]
     #### H4 header
     [[reveal:true]]
     ##### H5 header
     [[reveal:true]]
     ###### H6 header
-
     ====
-
+    
     /* slide 2 */
     ====
     [[background-color:cadetblue; color:black]]
     # ->Text<-
-
-
+    
     Paragraphs are separated by a blank line.
-
+    
     This is the 2nd paragraph. Text styles *Italic*, **bold**, `monospace` and ~~Strikethrough~~.
-
+    
     And note that you can backslash-escape any punctuation characters
     which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
-
-
+    
     > Block quotes are
     > written like so.
     >
     > They can span multiple paragraphs,
     > if you like.
-
-
     ====
-
+    
     /* slide 3 */
     ====
     [[background-color:indianred; color:black]]
     # ->Lists<-
-
-
+    
     Itemized lists look like:
     [[reveal:true]]
       * this one
       * that one
       * the other one
-
+    
     Here's a numbered list:
     [[reveal:true]]
      1. first item
      2. second item
      3. third item
-
+    
     Note: that --- not considering the asterisk --- the actual text content starts at 4-columns in.
-
     ====
-
+    
     /* slide 4 */
     ====
     [[background-color:indianred; color:black]]
     # ->Lists (2)<-
-
-
+    
     Now a nested list:
-    [[reveal:true]]
+    [[reveal:true; anim:slideInLeft]]
      1. First, get these ingredients:
-
+    
           * carrots
           * celery
           * lentils
-
+    
      2. Boil some water.
-
+    
      3. Dump everything in the pot and follow
         this algorithm:
-
+    
             find wooden spoon
             uncover pot
             stir
@@ -364,33 +353,30 @@ When presenting use following keyboard shortcuts to interact with slides:
             balance wooden spoon precariously on pot handle
             wait 10 minutes
             goto first step (or shut off burner when done)
-
+    
         Do not bump wooden spoon or it will fall.
-
+    
     Notice again how text always lines up on 4-space indents (including
     that last line which continues item 3 above).
-
     ====
-
+    
     /* slide 5 */
     ====
     # ->Tables<-
-
-
+    
     Tables can look like this:
-
+    
     |size | material   |  color
     |---- | ---------- | -----------
     |9    |leather     |  brown
     |10   |hemp canvas |  natural
     |11   |glass       |  transparent
-
+    
     Table: Shoes, their sizes, and what they're made of
-
+    
     (The above is the caption for the table.) Pandoc also supports
     multi-line tables:
-
-
+    
     |keyword  | text
     |-------- | -----------------------
     |red      | Sunsets, apples, and
@@ -400,31 +386,40 @@ When presenting use following keyboard shortcuts to interact with slides:
     |         | and other things it's
     |         | not easy being.
     ====
-
+    
     /* slide 6 */
     ====
     # ->Maths<-
-
-
+    
     Inline math equations go in like so: $ \omega = d\phi / dt $. Display
     math should get its own line and be put in in double-dollarsigns:
-
+    
     Maxwell's equations:
     $$ \nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0} $$
     $$ \nabla \cdot \vec{B} = 0 \nonumber $$
     $$ \nabla \times \vec{E} = - \frac{\partial B}{\partial t} \nonumber $$
     $$ \nabla \times \vec{B} = \mu_{0}\vec{J} + \mu_{0}\epsilon_{0}\frac{\partial E}{\partial t} $$
-
+    
     And note that you can backslash-escape any punctuation characters
     which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.
-
-
+    
     [[reveal:true]]
       * $ E = mc^2 $
       * $ \cos (2\theta) = \cos^2 \theta - \sin^2 \theta $
       * $ c = \pm\sqrt{a^2 + b^2} $
       * the other one
-
+    ====
+    
+    /* slide 7 */
+    ====
+    # -> Image <-
+    
+    The Claws of the Dragon, Senja, Norway.
+    
+    [[reveal:true; anim:slideInLeft; width:75%]]
+    ![Alt text](http://35photo.ru/photos_series/574/574181.jpg)
+    
+    [Open in maps](https://www.google.com/maps/place/Devil%27s+Jaw,+Berg,+Norway/@69.528935,17.3400671,5584a,20y,180h,40.7t/data=!3m1!1e3!4m2!3m1!1s0x45dcabd272fb1e17:0x864a1f90f2fc2f90)
     ====
 
 
