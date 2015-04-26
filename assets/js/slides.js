@@ -422,7 +422,8 @@ var Slides = (function($) {
     });
 
     /**
-     * From https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode
+     * This function is taken from
+     * https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Using_full_screen_mode
      */
     function toggleFullScreen() {
         if (!document.fullscreenElement &&          // alternative standard method
