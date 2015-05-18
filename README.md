@@ -6,6 +6,11 @@ This module provides CLI for making slides. A GUI app can be found here
 
 
 
+# Demo
+Check out sample slides produced by this app [over here.](https://slides.kinte.sh/sample.html)
+
+
+
 #Installation
 
 This tool requires Node.js. Download and install latest version of Node.js for your platform from
